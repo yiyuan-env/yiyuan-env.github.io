@@ -56,6 +56,11 @@ export default function Footer() {
                 </a>
               </li>
               <li>
+                <a href="#about" className="hover:text-white transition-colors hover:underline">
+                  關於邑沅
+                </a>
+              </li>
+              <li>
                 <a href="#projects" className="hover:text-white transition-colors hover:underline">
                   執行實績
                 </a>
@@ -63,11 +68,6 @@ export default function Footer() {
               <li>
                 <a href="#partners" className="hover:text-white transition-colors hover:underline">
                   合作夥伴
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-white transition-colors hover:underline">
-                  部落格
                 </a>
               </li>
             </ul>
