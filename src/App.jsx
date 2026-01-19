@@ -14,7 +14,7 @@ import CookieConsent from './components/CookieConsent'
 
 function App() {
   // Update this to your official domain when you have it
-  const siteUrl = "https://yiyuan-env.com.tw" 
+  const siteUrl = "https://yixue8924.github.io/" 
 
   return (
     <HelmetProvider>
