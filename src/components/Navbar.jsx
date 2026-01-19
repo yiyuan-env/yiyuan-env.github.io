@@ -25,7 +25,13 @@ export default function Navbar() {
             className="flex items-center space-x-2"
           >
             <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-              <img src={logoImg} alt="邑沅有限公司官方標誌" className="w-10 h-10 rounded-lg object-cover" />
+              <img 
+                src={logoImg}
+                alt="邑沅有限公司官方標誌"
+                fetchpriority="high"   // Directs browser to download this first
+                loading="eager"        // Prevents lazy loading for the top image
+                decoding="async"
+                className="w-10 h-10 rounded-lg object-cover" />
               <span className="text-xl font-bold text-forest-green hidden sm:inline">
                 邑沅有限公司
               </span>

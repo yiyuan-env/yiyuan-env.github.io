@@ -81,6 +81,9 @@ export default function PartnersSection() {
                 <img 
                   src={partner.logo} 
                   alt={partner.name}
+                  fetchpriority="high"
+                  loading="eager"
+                  decoding="async"
                   className="max-w-full max-h-32 object-contain"
                 />
               </div>
