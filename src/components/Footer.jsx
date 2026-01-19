@@ -95,8 +95,8 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-6">快速連結</h3>
             <ul className="space-y-3 text-gray-300 text-sm">
-              <li><a href="#services" className="hover:text-white transition-colors hover:underline">服務項目</a></li>
               <li><a href="#about" className="hover:text-white transition-colors hover:underline">關於邑沅</a></li>
+              <li><a href="#services" className="hover:text-white transition-colors hover:underline">服務項目</a></li>
               <li><a href="#projects" className="hover:text-white transition-colors hover:underline">執行實績</a></li>
               <li><a href="#partners" className="hover:text-white transition-colors hover:underline">合作夥伴</a></li>
             </ul>

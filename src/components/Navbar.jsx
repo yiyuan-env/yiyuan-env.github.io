@@ -17,7 +17,7 @@ const Navbar = () => {
   }, [])
 
   const navLinks = [
-    { name: '關於我們', href: '#about' },
+    { name: '關於邑沅', href: '#about' },
     { name: '服務項目', href: '#services' },
     { name: '執行實績', href: '#projects' },
     { name: '合作夥伴', href: '#partners' },
