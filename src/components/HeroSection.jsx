@@ -41,12 +41,18 @@ export default function HeroSection() {
               viewport={{ once: true }}
               className="flex gap-4"
             >
-              <button className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green hover:scale-105 transition-all duration-300 font-medium text-lg">
+              <a 
+                href="mailto:yixue8924@gmail.com?subject=諮詢意願&body=您好，我想了解更多關於貴公司的服務內容..."
+                className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+              >
                 立即聯絡
-              </button>
-              <button className="px-8 py-4 border-2 border-forest-green text-forest-green rounded-full hover:bg-forest-green hover:text-white hover:scale-105 transition-all duration-300 font-medium text-lg">
+              </a>
+              <a 
+                href="#about"
+                className="px-8 py-4 border-2 border-forest-green text-forest-green rounded-full hover:bg-forest-green hover:text-white hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+              >
                 了解更多
-              </button>
+              </a>
             </motion.div>
           </motion.div>
 
