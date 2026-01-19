@@ -30,7 +30,7 @@ A modern, professional landing page for Yiyuan Ltd (邑沅有限公司), an envi
 
 1. Clone or navigate to the project directory:
 ```bash
-cd "c:\Yiyuan OW"
+cd "c:\yiyuan"
 ```
 
 2. Install dependencies:
