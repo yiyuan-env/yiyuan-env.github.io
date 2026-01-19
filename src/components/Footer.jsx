@@ -1,10 +1,19 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Info } from 'lucide-react'
 import logoSvg from '../assets/yiyuan.svg'
 
 export default function Footer() {
+  const [showAlert, setShowAlert] = useState(false)
   const currentYear = new Date().getFullYear()
+
+  // 處理社群點擊
+  const handleSocialClick = (e) => {
+    e.preventDefault()
+    setShowAlert(true)
+    // 2.5 秒後自動關閉
+    setTimeout(() => setShowAlert(false), 2500)
+  }
 
   const footerVariants = {
     hidden: { opacity: 0 },
@@ -26,7 +35,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-forest-green text-white">
+    <footer className="bg-forest-green text-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           variants={footerVariants}
@@ -77,7 +86,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
-            <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20" >聯絡我們</h3>
+            <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20">聯絡我們</h3>
             <ul className="space-y-4 text-gray-300 text-sm">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="flex-shrink-0 mt-1" />
@@ -104,24 +113,21 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-6">追蹤我們</h3>
             <div className="flex gap-4">
-              <a
-                href="#"
-                className="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition-all duration-300"
-              >
-                <Facebook size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition-all duration-300"
-              >
-                <Linkedin size={20} />
-              </a>
-              <a
-                href="#"
-                className="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition-all duration-300"
-              >
-                <Twitter size={20} />
-              </a>
+              {[
+                { icon: <Facebook size={20} />, label: 'Facebook' },
+                { icon: <Linkedin size={20} />, label: 'Linkedin' },
+                { icon: <Twitter size={20} />, label: 'Twitter' }
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href="#"
+                  onClick={handleSocialClick}
+                  aria-label={social.label}
+                  className="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition-all duration-300"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </motion.div>
         </motion.div>
@@ -138,18 +144,12 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center gap-6 text-gray-300 text-sm"
         >
           <p>
-            © {currentYear} 邑沅有限公司. 版權所有。
+            © {currentYear} 邑沅有限公司．版權所有。
           </p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">
-              隱私政策
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              服務條款
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              免責聲明
-            </a>
+            <a href="#" className="hover:text-white transition-colors">隱私政策</a>
+            <a href="#" className="hover:text-white transition-colors">服務條款</a>
+            <a href="#" className="hover:text-white transition-colors">免責聲明</a>
           </div>
         </motion.div>
 
@@ -166,6 +166,28 @@ export default function Footer() {
           </p>
         </motion.div>
       </div>
+
+      {/* --- 自定義彈窗 (Custom Modal/Toast) --- */}
+      <AnimatePresence>
+        {showAlert && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, x: '-50%' }}
+            animate={{ opacity: 1, y: 0, x: '-50%' }}
+            exit={{ opacity: 0, y: 20, x: '-50%' }}
+            className="fixed bottom-10 left-1/2 z-[100] min-w-[280px] sm:min-w-[320px]"
+          >
+            <div className="bg-white text-forest-green px-6 py-4 rounded-2xl shadow-2xl border-l-4 border-forest-green flex items-center gap-4">
+              <div className="bg-[#F0F9F1] p-2 rounded-full">
+                <Info size={20} className="text-forest-green" />
+              </div>
+              <div>
+                <p className="font-bold text-sm">敬請期待！</p>
+                <p className="text-xs text-gray-600">社群專頁正在積極籌備中。</p>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   )
 }

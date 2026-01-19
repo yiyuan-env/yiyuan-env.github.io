@@ -4,6 +4,7 @@ import { Leaf, Zap, Briefcase, Video } from 'lucide-react'
 
 export default function ServicesSection() {
   const [expandedService, setExpandedService] = useState(null)
+  
   const services = [
     {
       id: 1,
@@ -64,9 +65,15 @@ export default function ServicesSection() {
   }
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+    <section id="services" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden scroll-mt-20">
+      {/* 背景裝飾元素 (Subtle Background Decorative Elements) */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-mint-green opacity-20 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 -right-24 w-80 h-80 bg-blue-50 opacity-30 rounded-full blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* 段落標題 (Section Header) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -82,7 +89,7 @@ export default function ServicesSection() {
           </p>
         </motion.div>
 
-        {/* Services Grid */}
+        {/* 服務網格 (Services Grid) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -98,41 +105,51 @@ export default function ServicesSection() {
                 variants={cardVariants}
                 className="group"
               >
-                <div className="bg-white rounded-2xl shadow-lg p-8 h-full hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-forest-green">
-                  {/* Icon Container */}
-                  <div className={`${service.bgColor} w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                    <IconComponent size={32} className={service.color} />
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg p-8 h-full hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-forest-green flex flex-col">
+                  
+                  {/* 圖示容器 - 手機版置中，桌機版靠左 */}
+                  <div className="flex justify-center md:justify-start">
+                    <div className={`${service.bgColor} w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
+                      <IconComponent size={32} className={service.color} />
+                    </div>
                   </div>
 
-                  {/* Title */}
-                  <h3 className="text-lg font-bold text-forest-green mb-3">
+                  {/* 標題 - 手機版置中，桌機版靠左 */}
+                  <h3 className="text-lg font-bold text-forest-green mb-3 text-center md:text-left">
                     {service.title}
                   </h3>
 
-                  {/* Description */}
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {service.description}
-                  </p>
+                  {/* 文字內容 - 保持靠左對齊 */}
+                  <div className="text-left flex-grow">
+                    <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                      {service.description}
+                    </p>
 
-                  {/* Details */}
-                  <div className="space-y-2">
-                    {service.details.map((detail, idx) => (
-                      (expandedService === service.id || idx < 3) && (
-                        <div key={idx} className="flex items-start text-sm text-gray-700">
-                          {detail}
-                        </div>
-                      )
-                    ))}
+                    {/* 詳情列表 */}
+                    <div className="space-y-2">
+                      {service.details.map((detail, idx) => (
+                        (expandedService === service.id || idx < 3) && (
+                          <div key={idx} className="flex items-center text-sm text-gray-700">
+                            <span className="w-1.5 h-1.5 rounded-full bg-forest-green/40 mr-2 flex-shrink-0" />
+                            {detail}
+                          </div>
+                        )
+                      ))}
+                    </div>
                   </div>
 
-                  {/* CTA Link */}
-                  <button 
-                    onClick={() => setExpandedService(expandedService === service.id ? null : service.id)}
-                    className="mt-6 text-forest-green hover:text-ocean-blue font-semibold text-sm flex items-center group"
-                  >
-                    {expandedService === service.id ? '收起' : '了解更多'}
-                    <span className={`ml-2 transition-transform ${expandedService === service.id ? 'rotate-180' : ''}`}>→</span>
-                  </button>
+                  {/* 行動按鈕 - 保持靠左 */}
+                  <div className="flex justify-start">
+                    <button 
+                      onClick={() => setExpandedService(expandedService === service.id ? null : service.id)}
+                      className="mt-8 text-forest-green hover:text-ocean-blue font-semibold text-sm flex items-center group transition-colors"
+                    >
+                      {expandedService === service.id ? '收起' : '了解更多'}
+                      <span className={`ml-2 transition-transform duration-300 ${expandedService === service.id ? 'rotate-180' : 'group-hover:translate-x-1'}`}>
+                        →
+                      </span>
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             )
