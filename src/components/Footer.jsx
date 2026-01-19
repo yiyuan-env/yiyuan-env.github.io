@@ -75,7 +75,7 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <div className="flex items-center space-x-2 mb-6">
               <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                <img src={logoSvg} alt="邑沅有限公司" className="w-12 h-12 rounded-lg" style={{ filter: 'brightness(0) invert(1)' }} />
+                <img src={logoSvg} alt="邑沅有限公司官方標誌" className="w-12 h-12 rounded-lg" style={{ filter: 'brightness(0) invert(1)' }} />
                 <span className="text-xl font-bold">邑沅有限公司</span>
               </a>
             </div>
