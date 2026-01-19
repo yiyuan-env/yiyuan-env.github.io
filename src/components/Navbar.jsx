@@ -24,10 +24,12 @@ export default function Navbar() {
             transition={{ duration: 0.5 }}
             className="flex items-center space-x-2"
           >
-            <img src={logoImg} alt="邑沅有限公司" className="w-10 h-10 rounded-lg object-cover" />
-            <span className="text-xl font-bold text-forest-green hidden sm:inline">
-              邑沅有限公司
-            </span>
+            <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+              <img src={logoImg} alt="邑沅有限公司" className="w-10 h-10 rounded-lg object-cover" />
+              <span className="text-xl font-bold text-forest-green hidden sm:inline">
+                邑沅有限公司
+              </span>
+            </a>
           </motion.div>
 
           {/* Desktop Menu */}
