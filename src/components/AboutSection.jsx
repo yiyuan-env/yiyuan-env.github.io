@@ -135,9 +135,14 @@ export default function AboutSection() {
             { label: '受益的學生與社區成員', value: '10,000+', color: 'text-ocean-blue' },
             { label: '年環境教育經驗', value: '15+', color: 'text-amber-600' }
           ].map((stat, i) => (
-            <div key={i} className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300">
+            <div 
+              key={i} 
+              className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300"
+              role="group" 
+              aria-label={`${stat.label}: ${stat.value}`}
+            >
               <div className={`text-4xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
-              <p className="text-gray-600">{stat.label}</p>
+              <p className="text-gray-600 font-medium">{stat.label}</p>
             </div>
           ))}
         </motion.div>

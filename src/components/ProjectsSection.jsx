@@ -96,7 +96,11 @@ export default function ProjectsSection() {
   const displayedProjects = showAllProjects ? projects : projects.slice(0, 3);
 
   return (
-    <section id="projects" className="py-24 px-4 sm:px-6 lg:px-8 bg-mint-green/30">
+    <section 
+      id="projects" 
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-mint-green/30 scroll-mt-20"
+      aria-labelledby="projects-title"
+    >
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -106,7 +110,7 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
+          <h2 id="projects-title" className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
             相關執行實績
           </h2>
           <div className="w-24 h-1.5 bg-forest-green mx-auto mb-8 rounded-full"></div>
@@ -131,7 +135,7 @@ export default function ProjectsSection() {
                 variants={itemVariants}
                 initial="hidden"
                 animate="visible"
-                exit={{ opacity: 0, scale: 0.95 }}
+                exit={{ opacity: 0, scale: 0.98 }}
                 className="group"
               >
                 <div className="bg-white rounded-3xl shadow-sm hover:shadow-xl p-6 md:p-10 border border-gray-100 transition-all duration-500 relative overflow-hidden">
@@ -144,8 +148,13 @@ export default function ProjectsSection() {
                         <span className="inline-flex px-4 py-1.5 bg-forest-green text-white rounded-full text-sm font-bold tracking-wide">
                           {project.year}
                         </span>
-                        <span className="inline-flex px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase tracking-wider">
-                          {project.status}
+                        
+                        {/* ✅ 已整合的 Accessibility 優化狀態標籤 */}
+                        <span 
+                          className="inline-flex px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase tracking-wider"
+                          role="status"
+                        >
+                          執行狀態：{project.status}
                         </span>
                       </div>
                       
@@ -196,6 +205,7 @@ export default function ProjectsSection() {
             <motion.span
               animate={{ rotate: showAllProjects ? 180 : 0 }}
               transition={{ duration: 0.3 }}
+              aria-hidden="true"
             >
               ↓
             </motion.span>
