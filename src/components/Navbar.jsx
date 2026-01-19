@@ -34,6 +34,7 @@ const Navbar = () => {
           
           {/* Logo 區域 */}
           <div className="flex-shrink-0 flex items-center gap-3">
+            <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <img 
               src={logoSvg} 
               alt="邑沅有限公司標誌" 
@@ -46,6 +47,7 @@ const Navbar = () => {
             }`}>
               邑沅有限公司
             </span>
+            </a>
           </div>
 
           {/* 桌面版選單 */}
@@ -67,7 +69,7 @@ const Navbar = () => {
                 href="#contact"
                 className="bg-forest-green text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg active:scale-95"
               >
-                立即諮詢
+                聯絡我們
               </a>
             </div>
           </div>
@@ -115,7 +117,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center bg-forest-green text-white px-6 py-4 rounded-xl font-bold shadow-lg"
                 >
-                  立即諮詢
+                  聯絡我們
                 </a>
               </div>
             </div>
