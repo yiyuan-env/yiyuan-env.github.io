@@ -3,53 +3,49 @@ import { motion } from 'framer-motion'
 import { Waves } from 'lucide-react'
 
 export default function HeroSection() {
-  // We pre-encode the URI to handle Chinese characters and special symbols correctly
   const emailRecipient = "yixue8924@gmail.com";
   const emailSubject = encodeURIComponent("諮詢意願");
   const emailBody = encodeURIComponent("您好，我想了解更多關於貴公司的服務內容...");
   const mailtoUrl = `mailto:${emailRecipient}?subject=${emailSubject}&body=${emailBody}`;
 
   return (
-    <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-mint-green to-white min-h-screen flex items-center">
+    // Added overflow-x-hidden to prevent horizontal scroll during animations
+    <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-mint-green to-white min-h-screen flex items-center overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
+          
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0.01, x: -30 }} // Changed 0 to 0.01 for better LCP detection
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0.01, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green mb-6 leading-tight"
             >
               專業環境教育<br />與顧問服務
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0.01, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-700 mb-8 leading-relaxed max-w-lg"
             >
               我們深耕於政府合作、教育、企業與社區，提供多元化的永續發展與環保解決方案。
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              viewport={{ once: true }}
+              initial={{ opacity: 0.01, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
               className="flex gap-4"
             >
               <a 
                 href={mailtoUrl}
-                // target="_blank" can help trigger protocol handlers in some browsers
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
@@ -65,16 +61,14 @@ export default function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* Right Illustration (Keep your existing SVG code here) */}
+          {/* Right Illustration */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
+            initial={{ opacity: 0.01, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="relative h-96 md:h-full flex items-center justify-center"
           >
             <div className="relative w-full h-full">
-               {/* Your SVG remains the same */}
                <svg viewBox="0 0 400 400" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
                  <circle cx="200" cy="200" r="150" fill="#F0F9F1" opacity="0.3" />
                  <circle cx="200" cy="200" r="100" fill="#F0F9F1" opacity="0.5" />
@@ -87,9 +81,10 @@ export default function HeroSection() {
                  <circle cx="320" cy="220" r="3" fill="#0077B6" opacity="0.4" />
                  <circle cx="150" cy="150" r="2" fill="#2D5A27" opacity="0.3" />
                </svg>
+               
                <motion.div
                  animate={{ y: [0, -20, 0] }}
-                 transition={{ duration: 4, repeat: Infinity }}
+                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                  className="absolute top-10 right-10"
                >
                  <Waves size={48} className="text-ocean-blue opacity-70" />
