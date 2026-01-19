@@ -116,7 +116,7 @@ export default function PartnersSection() {
           className="mt-24 bg-gradient-to-br from-mint-green/30 to-white border border-mint-green/20 rounded-3xl p-8 md:p-16 text-center shadow-inner"
         >
           <p className="text-lg md:text-xl text-forest-green font-medium leading-loose max-w-3xl mx-auto">
-            「多年來與政府機構與民間組織的合作，讓我們在環境教育領域累積了豐富的經驗與可信的成績。我們致力於為台灣的永續發展做出貢獻。」
+            「多年來與政府機關及民間單位協同合作，讓我們在環境教育領域累積了豐富的經驗與可信的成績。我們致力於為臺灣的永續發展做出貢獻。」
           </p>
         </motion.div>
       </div>

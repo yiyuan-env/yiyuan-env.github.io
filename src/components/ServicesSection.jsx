@@ -17,7 +17,7 @@ export default function ServicesSection() {
     },
     {
       id: 2,
-      title: '綠色生活及零碳夥伴',
+      title: '綠色生活及減碳夥伴',
       description: '協助企業與社區實現碳減排目標，推廣永續生活方式',
       details: ['碳減排', '永續生活', '企業諮詢', '環保認證', '減碳培訓', '永續報告'],
       icon: Zap,
@@ -28,7 +28,7 @@ export default function ServicesSection() {
       id: 3,
       title: '活動相關服務',
       description: '組織與執行各類環保與教育活動，營造互動式學習體驗',
-      details: ['工作坊', '環保活動', '體驗營', '社區推廣', '志工培訓', '活動評估'],
+      details: ['工作坊', '環境教育活動', '社區推廣', '志工培訓', '活動評估'],
       icon: Briefcase,
       color: 'text-amber-600',
       bgColor: 'bg-amber-100',
