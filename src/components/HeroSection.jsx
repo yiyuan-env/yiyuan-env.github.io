@@ -1,22 +1,32 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Waves } from 'lucide-react'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Waves, Copy, Check } from 'lucide-react'
 
 export default function HeroSection() {
-  const emailRecipient = "yixue8924@gmail.com";
+  const [copied, setCopied] = useState(false);
+  const emailAddress = "yixue8924@gmail.com";
   const emailSubject = encodeURIComponent("諮詢意願");
   const emailBody = encodeURIComponent("您好，我想了解更多關於貴公司的服務內容...");
-  const mailtoUrl = `mailto:${emailRecipient}?subject=${emailSubject}&body=${emailBody}`;
+  const mailtoUrl = `mailto:${emailAddress}?subject=${emailSubject}&body=${emailBody}`;
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(emailAddress);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  };
 
   return (
-    // Added overflow-x-hidden to prevent horizontal scroll during animations
     <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-mint-green to-white min-h-screen flex items-center overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0.01, x: -30 }} // Changed 0 to 0.01 for better LCP detection
+            initial={{ opacity: 0.01, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
@@ -38,27 +48,57 @@ export default function HeroSection() {
               我們深耕於政府合作、教育、企業與社區，提供多元化的永續發展與環保解決方案。
             </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0.01, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex gap-4"
-            >
-              <a 
-                href={mailtoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+            <div className="space-y-4">
+              <motion.div
+                initial={{ opacity: 0.01, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-wrap gap-4"
               >
-                立即聯絡
-              </a>
-              <a 
-                href="#about"
-                className="px-8 py-4 border-2 border-forest-green text-forest-green rounded-full hover:bg-forest-green hover:text-white hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+                <a 
+                  href={mailtoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+                >
+                  立即聯絡
+                </a>
+                <a 
+                  href="#about"
+                  className="px-8 py-4 border-2 border-forest-green text-forest-green rounded-full hover:bg-forest-green hover:text-white hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+                >
+                  了解更多
+                </a>
+              </motion.div>
+
+              {/* Copy Email Logic - The "Plan B" */}
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="flex items-center gap-2 text-sm text-forest-green/70 ml-2"
               >
-                了解更多
-              </a>
-            </motion.div>
+                <span>或直接複製信箱: {emailAddress}</span>
+                <button 
+                  onClick={copyToClipboard}
+                  className="p-2 hover:bg-forest-green/10 rounded-full transition-colors relative"
+                  title="複製信箱"
+                >
+                  <AnimatePresence mode="wait">
+                    {copied ? (
+                      <motion.div key="check" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                        <Check size={16} className="text-green-600" />
+                      </motion.div>
+                    ) : (
+                      <motion.div key="copy" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                        <Copy size={16} />
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </button>
+                {copied && <span className="text-xs font-bold text-green-600 animate-pulse">已複製!</span>}
+              </motion.div>
+            </div>
           </motion.div>
 
           {/* Right Illustration */}
@@ -68,6 +108,7 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative h-96 md:h-full flex items-center justify-center"
           >
+            {/* SVG Illustration remains exactly as before */}
             <div className="relative w-full h-full">
                <svg viewBox="0 0 400 400" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
                  <circle cx="200" cy="200" r="150" fill="#F0F9F1" opacity="0.3" />

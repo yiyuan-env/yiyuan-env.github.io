@@ -37,12 +37,6 @@ export default function Footer() {
   const [activePolicy, setActivePolicy] = useState(null)
   const currentYear = new Date().getFullYear()
 
-  // ✅ Fix: URL Encode the mailto link for cross-device compatibility
-  const emailRecipient = "yixue8924@gmail.com";
-  const emailSubject = encodeURIComponent("聯繫邑沅");
-  const emailBody = encodeURIComponent("您好，我對您的服務感興趣，請與我聯繫。");
-  const mailtoUrl = `mailto:${emailRecipient}?subject=${emailSubject}&body=${emailBody}`;
-
   // Handle Social Clicks
   const handleSocialClick = (e) => {
     e.preventDefault()
@@ -84,14 +78,11 @@ export default function Footer() {
                 <img 
                   src={logoSvg}
                   alt="邑沅有限公司官方標誌"
-                  width="48"
-                  height="48"
-                  fetchpriority="high"
-                  loading="eager"
+                  fetchpriority="high"   // NEW: Directs browser to download this first
+                  loading="eager"        // NEW: Prevents lazy loading for the top image
                   decoding="async"
                   className="w-12 h-12 rounded-lg"
-                  style={{ filter: 'brightness(0) invert(1)' }} 
-                />
+                  style={{ filter: 'brightness(0) invert(1)' }} />
                 <span className="text-xl font-bold">邑沅有限公司</span>
               </a>
             </div>
@@ -111,7 +102,7 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact Info - Updated with Actionable Links */}
           <motion.div variants={itemVariants}>
             <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20">聯絡我們</h3>
             <ul className="space-y-4 text-gray-300 text-sm">
@@ -123,13 +114,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={18} className="flex-shrink-0 mt-1" />
-                {/* ✅ Integrated encoded mailtoUrl */}
-                <a 
-                  href={mailtoUrl} 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
-                >
+                <a href="mailto:yixue8924@gmail.com" className="hover:text-white transition-colors">
                   yixue8924@gmail.com
                 </a>
               </li>
@@ -182,13 +167,13 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center gap-6 text-gray-300 text-sm"
         >
           <p>© {currentYear} 邑沅有限公司．版權所有。</p>
-          <p className="text-gray-400 text-xs leading-relaxed max-w-md md:text-left text-center">
+          <p className="text-gray-400 text-xs leading-relaxed">
             本網站所有內容的著作權等智慧財產權，均為邑沅有限公司所有。本網站內容僅供參考，若有任何疑問，請直接與我們聯絡。
           </p>
           <div className="flex gap-6">
-            <button onClick={() => setActivePolicy(POLICIES.privacy)} className="hover:text-white transition-colors underline-offset-4 hover:underline">隱私政策</button>
-            <button onClick={() => setActivePolicy(POLICIES.terms)} className="hover:text-white transition-colors underline-offset-4 hover:underline">服務條款</button>
-            <button onClick={() => setActivePolicy(POLICIES.disclaimer)} className="hover:text-white transition-colors underline-offset-4 hover:underline">免責聲明</button>
+            <button onClick={() => setActivePolicy(POLICIES.privacy)} className="hover:text-white transition-colors">隱私政策</button>
+            <button onClick={() => setActivePolicy(POLICIES.terms)} className="hover:text-white transition-colors">服務條款</button>
+            <button onClick={() => setActivePolicy(POLICIES.disclaimer)} className="hover:text-white transition-colors">免責聲明</button>
           </div>
         </motion.div>
       </div>
@@ -208,7 +193,7 @@ export default function Footer() {
             >
               <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-[#F0F9F1]">
                 <h3 className="text-xl font-bold text-forest-green">{activePolicy.title}</h3>
-                <button onClick={() => setActivePolicy(null)} className="p-2 hover:bg-white/50 rounded-full transition-colors" aria-label="Close modal"><X size={24} className="text-gray-400" /></button>
+                <button onClick={() => setActivePolicy(null)} className="p-2 hover:bg-white/50 rounded-full transition-colors"><X size={24} className="text-gray-400" /></button>
               </div>
               <div className="p-8 overflow-y-auto leading-relaxed text-gray-600">
                 {activePolicy.content.split('\n').map((line, i) => <p key={i} className="mb-4">{line}</p>)}
