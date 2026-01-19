@@ -8,6 +8,7 @@ import AboutSection from './components/AboutSection'
 import ProjectsSection from './components/ProjectsSection'
 import PartnersSection from './components/PartnersSection'
 import Footer from './components/Footer'
+import BackToTop from './components/BackToTop'
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <ProjectsSection />
       <PartnersSection />
       <Footer />
+      <BackToTop />
     </div>
   )
 }
