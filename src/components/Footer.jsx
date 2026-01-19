@@ -77,7 +77,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <motion.div variants={itemVariants}>
-            <h3 id="contact" className="text-lg font-bold mb-6">聯絡我們</h3>
+            <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20" >聯絡我們</h3>
             <ul className="space-y-4 text-gray-300 text-sm">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="flex-shrink-0 mt-1" />
