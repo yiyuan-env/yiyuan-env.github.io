@@ -18,7 +18,7 @@ const CookieConsent = lazy(() => import('./components/CookieConsent'))
 const SectionLoader = () => <div className="h-20 bg-transparent" />
 
 function App() {
-  const siteUrl = "https://yixue8924.github.io/" 
+  const siteUrl = "https://yiyuan-env.github.io/"
 
   return (
     <HelmetProvider>
@@ -67,7 +67,7 @@ function App() {
 
         {/* --- Layout Sections --- */}
         <Navbar />
-        
+
         <main>
           {/* Hero section is rendered immediately to satisfy LCP */}
           <HeroSection />
