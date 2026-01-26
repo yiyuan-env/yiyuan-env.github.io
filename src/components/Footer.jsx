@@ -109,19 +109,19 @@ export default function Footer() {
             <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20">聯絡我們</h3>
             <ul className="space-y-4 text-gray-300 text-sm">
               <li className="flex items-start gap-3">
-                <Phone size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-forest-green" />
+                <Phone size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-white" />
                 <a href="tel:0223880028" className="hover:text-white dark:hover:text-mint-green transition-colors">
                   02-2388-0028
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-forest-green" />
+                <Mail size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-white" />
                 <a href="mailto:yixue8924@gmail.com" className="hover:text-white dark:hover:text-mint-green transition-colors">
                   yixue8924@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-forest-green" />
+                <MapPin size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-white" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=臺北市大同區長安西路303號10樓之1"
                   target="_blank"

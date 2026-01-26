@@ -138,31 +138,31 @@ export default function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 className="group"
               >
-                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl p-6 md:p-10 border border-gray-100 dark:border-gray-700 transition-all duration-500 relative overflow-hidden">
+                <div className="bg-white dark:bg-gray-800 group-hover:dark:bg-white rounded-3xl shadow-sm hover:shadow-xl p-6 md:p-10 border border-gray-100 dark:border-gray-700 group-hover:dark:border-gray-100 transition-all duration-500 relative overflow-hidden">
                   {/* Subtle Background Accent */}
-                  <div className="absolute top-0 left-0 w-2 h-full bg-forest-green dark:bg-mint-green opacity-80" />
+                  <div className="absolute top-0 left-0 w-2 h-full bg-forest-green dark:bg-mint-green group-hover:dark:bg-forest-green opacity-80" />
 
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className="inline-flex px-4 py-1.5 bg-forest-green dark:bg-mint-green text-white dark:text-forest-green rounded-full text-sm font-bold tracking-wide">
+                        <span className="inline-flex px-4 py-1.5 bg-forest-green dark:bg-mint-green group-hover:dark:bg-forest-green text-white dark:text-forest-green group-hover:dark:text-white rounded-full text-sm font-bold tracking-wide">
                           {project.year}
                         </span>
 
                         {/* ✅ 已整合的 Accessibility 優化狀態標籤 */}
                         <span
-                          className="inline-flex px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-bold uppercase tracking-wider"
+                          className="inline-flex px-3 py-1 bg-gray-100 dark:bg-gray-700 group-hover:dark:bg-gray-100 text-gray-600 dark:text-gray-300 group-hover:dark:text-gray-600 rounded-full text-xs font-bold uppercase tracking-wider"
                           role="status"
                         >
                           執行狀態：{project.status}
                         </span>
                       </div>
 
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-forest-green dark:group-hover:text-mint-green transition-colors duration-300">
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-forest-green dark:group-hover:text-forest-green transition-colors duration-300">
                         {project.title}
                       </h3>
 
-                      <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-lg">
+                      <p className="text-gray-600 dark:text-gray-300 group-hover:dark:text-gray-600 mb-8 leading-relaxed text-lg">
                         {project.description}
                       </p>
 
@@ -170,7 +170,7 @@ export default function ProjectsSection() {
                         {project.details.map((detail, idx) => (
                           <span
                             key={idx}
-                            className="px-4 py-1.5 bg-mint-green/40 dark:bg-mint-green/10 text-forest-green dark:text-mint-green rounded-lg text-sm font-semibold"
+                            className="px-4 py-1.5 bg-mint-green/40 dark:bg-mint-green/10 group-hover:dark:bg-mint-green/40 text-forest-green dark:text-mint-green group-hover:dark:text-forest-green rounded-lg text-sm font-semibold"
                           >
                             {detail}
                           </span>
@@ -179,7 +179,7 @@ export default function ProjectsSection() {
                     </div>
 
                     <div className="hidden md:block">
-                      <CheckCircle className="text-forest-green/20 dark:text-mint-green/20 group-hover:text-forest-green dark:group-hover:text-mint-green transition-colors duration-500" size={48} strokeWidth={1.5} />
+                      <CheckCircle className="text-forest-green/20 dark:text-mint-green/20 group-hover:text-forest-green dark:group-hover:text-forest-green transition-colors duration-500" size={48} strokeWidth={1.5} />
                     </div>
                   </div>
                 </div>

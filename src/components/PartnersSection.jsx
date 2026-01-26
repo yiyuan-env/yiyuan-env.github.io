@@ -56,11 +56,11 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-forest-green dark:text-mint-green mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-forest-green dark:text-white mb-6 font-display">
             合作夥伴
           </h2>
-          <div className="w-16 h-1 bg-forest-green dark:bg-mint-green mx-auto mb-6 rounded-full" />
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
+          <div className="w-16 h-1 bg-forest-green dark:bg-mint-green mx-auto mb-8 rounded-full" />
+          <p className="text-xl text-gray-600 dark:text-white/90 max-w-2xl mx-auto leading-relaxed">
             與政府機構、國際組織與企業夥伴攜手合作
           </p>
         </motion.div>
@@ -80,9 +80,9 @@ export default function PartnersSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="flex flex-col"
+              className="flex flex-col group"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 flex items-center justify-center h-40 hover:shadow-xl transition-all duration-500 group relative">
+              <div className="bg-white dark:bg-gray-800 transition-all duration-300 group-hover:dark:bg-white rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 group-hover:dark:border-white p-6 flex items-center justify-center h-40 hover:shadow-xl relative overflow-hidden">
                 <img
                   src={partner.logo}
                   alt={`${partner.name} 標誌`}
@@ -92,14 +92,14 @@ export default function PartnersSection() {
                   loading="lazy"
                   decoding="async"
                   // 💡 移除 grayscale，保持原色
-                  className="max-w-[80%] max-h-[70%] object-contain transition-transform duration-500 group-hover:scale-105"
+                  className="max-w-[80%] max-h-[70%] object-contain transition-transform duration-500 group-hover:scale-110"
                 />
               </div>
               <div className="mt-6 text-center">
-                <h3 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-forest-green dark:group-hover:text-mint-green transition-colors">
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white transition-colors duration-300">
                   {partner.name}
                 </h3>
-                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 leading-relaxed px-2">
+                <p className="mt-2 text-xs text-gray-500 dark:text-white/80 leading-relaxed px-2 transition-colors duration-300">
                   {partner.description}
                 </p>
               </div>
@@ -115,7 +115,7 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           className="mt-24 bg-gradient-to-br from-mint-green/30 to-white dark:from-mint-green/10 dark:to-gray-800 border border-mint-green/20 dark:border-mint-green/10 rounded-3xl p-8 md:p-16 text-center shadow-inner"
         >
-          <p className="text-lg md:text-xl text-forest-green dark:text-mint-green font-medium leading-loose max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-forest-green dark:text-white font-medium leading-loose max-w-3xl mx-auto">
             「多年來與政府機關及民間單位協同合作，讓我們在環境教育領域累積了豐富的經驗與可信的成績。我們致力於為臺灣的永續發展做出貢獻。」
           </p>
         </motion.div>
