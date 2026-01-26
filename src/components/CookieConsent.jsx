@@ -54,15 +54,15 @@ export default function CookieConsent() {
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
           className="fixed bottom-0 left-0 right-0 z-[150] p-4 md:p-6"
         >
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border border-gray-100 dark:border-gray-700 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-start gap-4">
-              <div className="bg-mint-green/30 p-3 rounded-full text-forest-green flex-shrink-0">
+              <div className="bg-mint-green/30 dark:bg-mint-green/10 p-3 rounded-full text-forest-green dark:text-mint-green flex-shrink-0">
                 <Cookie size={28} />
               </div>
               <div>
-                <h4 className="text-lg font-bold text-gray-800 mb-1">我們重視您的隱私</h4>
-                <p className="text-sm text-gray-600 leading-relaxed max-w-xl">
-                  本網站使用 Cookie 以提升您的瀏覽體驗並分析流量。繼續使用本網站即表示您同意我們使用 Cookie。您可以隨時在隱私權設定中調整您的偏好設定。
+                <h4 className="text-lg font-bold text-gray-800 dark:text-white mb-1">隱私權設定</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed max-w-xl">
+                  我們使用 Cookie 來提升您的瀏覽體驗。除了必要的 Cookie 外，我們也希望使用分析型 Cookie 來了解您如何使用本網站。您可以隨時在隱私權設定中調整您的偏好設定。
                 </p>
               </div>
             </div>
@@ -70,7 +70,7 @@ export default function CookieConsent() {
             <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
               <button
                 onClick={() => setShowPreferences(true)}
-                className="px-6 py-2.5 rounded-xl border-2 border-gray-200 text-gray-600 font-medium hover:border-forest-green hover:text-forest-green transition-colors"
+                className="px-6 py-2.5 rounded-xl border-2 border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 font-medium hover:border-forest-green dark:hover:border-mint-green hover:text-forest-green dark:hover:text-mint-green transition-colors"
               >
                 自訂選項
               </button>
@@ -95,31 +95,31 @@ export default function CookieConsent() {
           />
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
-            className="relative bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden"
+            className="relative bg-white dark:bg-gray-800 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden"
           >
-            <div className="p-6 border-b border-gray-100 bg-mint-green/10 flex justify-between items-center">
+            <div className="p-6 border-b border-gray-100 dark:border-gray-700 bg-mint-green/10 dark:bg-gray-700/50 flex justify-between items-center">
               <div className="flex items-center gap-3">
-                <Settings className="text-forest-green" size={24} />
-                <h3 className="text-xl font-bold text-gray-800">Cookie 偏好設定</h3>
+                <Settings className="text-forest-green dark:text-mint-green" size={24} />
+                <h3 className="text-xl font-bold text-gray-800 dark:text-white">Cookie 偏好設定</h3>
               </div>
-              <button onClick={() => setShowPreferences(false)}><X className="text-gray-400 hover:text-gray-600" /></button>
+              <button onClick={() => setShowPreferences(false)}><X className="text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200" /></button>
             </div>
 
             <div className="p-6 space-y-6">
               {/* Necessary */}
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h4 className="font-bold text-gray-800">必要性 Cookie</h4>
-                  <p className="text-sm text-gray-500 mt-1">維持網站運作所需，無法關閉。</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white">必要性 Cookie</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">維持網站運作所需，無法關閉。</p>
                 </div>
-                <Check className="text-forest-green shrink-0" />
+                <Check className="text-forest-green dark:text-mint-green shrink-0" />
               </div>
 
               {/* Analytics */}
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h4 className="font-bold text-gray-800">分析性 Cookie</h4>
-                  <p className="text-sm text-gray-500 mt-1">幫助我們了解網站流量與效能 (Google Analytics)。</p>
+                  <h4 className="font-bold text-gray-800 dark:text-white">分析性 Cookie</h4>
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">幫助我們了解網站流量與效能 (Google Analytics)。</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input
@@ -128,15 +128,15 @@ export default function CookieConsent() {
                     checked={consent.analytics}
                     onChange={(e) => setConsent(prev => ({ ...prev, analytics: e.target.checked }))}
                   />
-                  <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-green"></div>
+                  <div className="w-11 h-6 bg-gray-200 dark:bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-green dark:peer-checked:bg-mint-green"></div>
                 </label>
               </div>
             </div>
 
-            <div className="p-6 border-t border-gray-100 flex justify-end gap-3">
+            <div className="p-6 border-t border-gray-100 dark:border-gray-700 flex justify-end gap-3">
               <button
                 onClick={() => setShowPreferences(false)}
-                className="px-6 py-2.5 text-gray-500 hover:text-gray-700 font-medium"
+                className="px-6 py-2.5 text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 font-medium"
               >
                 取消
               </button>

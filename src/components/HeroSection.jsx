@@ -20,7 +20,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-mint-green to-white min-h-screen flex items-center overflow-x-hidden">
+    <section className="pt-28 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-mint-green to-white dark:from-gray-900 dark:to-gray-800 min-h-screen flex items-center overflow-x-hidden transition-colors duration-300">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
@@ -34,7 +34,7 @@ export default function HeroSection() {
               initial={{ opacity: 0.01, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green dark:text-mint-green mb-6 leading-tight"
             >
               專業環境教育<br />與顧問服務
             </motion.h1>
@@ -43,7 +43,7 @@ export default function HeroSection() {
               initial={{ opacity: 0.01, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-lg text-gray-700 mb-8 leading-relaxed max-w-lg"
+              className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-lg"
             >
               我們深耕於政府合作、教育、企業與社區，提供多元化的永續發展與環保解決方案。
             </motion.p>
@@ -59,13 +59,13 @@ export default function HeroSection() {
                   href={mailtoUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+                  className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green dark:hover:bg-gray-800 dark:hover:text-mint-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
                 >
                   立即聯絡
                 </a>
                 <a
                   href="#about"
-                  className="px-8 py-4 border-2 border-forest-green text-forest-green rounded-full hover:bg-forest-green hover:text-white hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
+                  className="px-8 py-4 border-2 border-forest-green text-forest-green dark:text-mint-green dark:border-mint-green rounded-full hover:bg-forest-green hover:text-white dark:hover:bg-mint-green dark:hover:text-gray-900 hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
                 >
                   了解更多
                 </a>
@@ -76,12 +76,12 @@ export default function HeroSection() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
-                className="flex items-center gap-2 text-sm text-forest-green/70 ml-2"
+                className="flex items-center gap-2 text-sm text-forest-green/70 dark:text-mint-green/70 ml-2"
               >
                 <span>或直接複製信箱: {emailAddress}</span>
                 <button
                   onClick={copyToClipboard}
-                  className="p-2 hover:bg-forest-green/10 rounded-full transition-colors relative"
+                  className="p-2 hover:bg-forest-green/10 dark:hover:bg-mint-green/10 rounded-full transition-colors relative"
                   title="複製信箱"
                   aria-label="複製電子郵件信箱"
                 >

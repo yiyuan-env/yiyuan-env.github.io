@@ -96,9 +96,9 @@ export default function ProjectsSection() {
   const displayedProjects = showAllProjects ? projects : projects.slice(0, 3);
 
   return (
-    <section 
-      id="projects" 
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-mint-green/30 scroll-mt-20"
+    <section
+      id="projects"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-mint-green/30 dark:bg-gray-800/30 scroll-mt-20 transition-colors duration-300"
       aria-labelledby="projects-title"
     >
       <div className="max-w-5xl mx-auto">
@@ -110,11 +110,11 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 id="projects-title" className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
+          <h2 id="projects-title" className="text-4xl md:text-5xl font-bold text-forest-green dark:text-mint-green mb-6">
             相關執行實績
           </h2>
-          <div className="w-24 h-1.5 bg-forest-green mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl text-gray-700 max-w-2xl mx-auto leading-relaxed">
+          <div className="w-24 h-1.5 bg-forest-green dark:bg-mint-green mx-auto mb-8 rounded-full"></div>
+          <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             多年來與政府與機構攜手，深耕環保與環境教育領域
           </p>
         </motion.div>
@@ -138,31 +138,31 @@ export default function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.98 }}
                 className="group"
               >
-                <div className="bg-white rounded-3xl shadow-sm hover:shadow-xl p-6 md:p-10 border border-gray-100 transition-all duration-500 relative overflow-hidden">
+                <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-sm hover:shadow-xl p-6 md:p-10 border border-gray-100 dark:border-gray-700 transition-all duration-500 relative overflow-hidden">
                   {/* Subtle Background Accent */}
-                  <div className="absolute top-0 left-0 w-2 h-full bg-forest-green opacity-80" />
+                  <div className="absolute top-0 left-0 w-2 h-full bg-forest-green dark:bg-mint-green opacity-80" />
 
                   <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-4">
-                        <span className="inline-flex px-4 py-1.5 bg-forest-green text-white rounded-full text-sm font-bold tracking-wide">
+                        <span className="inline-flex px-4 py-1.5 bg-forest-green dark:bg-mint-green text-white dark:text-forest-green rounded-full text-sm font-bold tracking-wide">
                           {project.year}
                         </span>
-                        
+
                         {/* ✅ 已整合的 Accessibility 優化狀態標籤 */}
-                        <span 
-                          className="inline-flex px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-bold uppercase tracking-wider"
+                        <span
+                          className="inline-flex px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 rounded-full text-xs font-bold uppercase tracking-wider"
                           role="status"
                         >
                           執行狀態：{project.status}
                         </span>
                       </div>
-                      
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 group-hover:text-forest-green transition-colors duration-300">
+
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-forest-green dark:group-hover:text-mint-green transition-colors duration-300">
                         {project.title}
                       </h3>
-                      
-                      <p className="text-gray-600 mb-8 leading-relaxed text-lg">
+
+                      <p className="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed text-lg">
                         {project.description}
                       </p>
 
@@ -170,16 +170,16 @@ export default function ProjectsSection() {
                         {project.details.map((detail, idx) => (
                           <span
                             key={idx}
-                            className="px-4 py-1.5 bg-mint-green/40 text-forest-green rounded-lg text-sm font-semibold"
+                            className="px-4 py-1.5 bg-mint-green/40 dark:bg-mint-green/10 text-forest-green dark:text-mint-green rounded-lg text-sm font-semibold"
                           >
                             {detail}
                           </span>
                         ))}
                       </div>
                     </div>
-                    
+
                     <div className="hidden md:block">
-                      <CheckCircle className="text-forest-green/20 group-hover:text-forest-green transition-colors duration-500" size={48} strokeWidth={1.5} />
+                      <CheckCircle className="text-forest-green/20 dark:text-mint-green/20 group-hover:text-forest-green dark:group-hover:text-mint-green transition-colors duration-500" size={48} strokeWidth={1.5} />
                     </div>
                   </div>
                 </div>
@@ -196,10 +196,10 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
           className="mt-20 text-center"
         >
-          <button 
+          <button
             onClick={() => setShowAllProjects(!showAllProjects)}
             aria-expanded={showAllProjects}
-            className="px-10 py-4 bg-forest-green text-white rounded-full hover:shadow-2xl hover:bg-forest-green/90 hover:-translate-y-1 transition-all duration-300 font-bold text-lg inline-flex items-center gap-3"
+            className="px-10 py-4 bg-forest-green dark:bg-mint-green text-white dark:text-forest-green rounded-full hover:shadow-2xl hover:bg-forest-green/90 dark:hover:bg-mint-green/90 hover:-translate-y-1 transition-all duration-300 font-bold text-lg inline-flex items-center gap-3"
           >
             {showAllProjects ? '收起案例集' : '查看完整案例集'}
             <motion.span

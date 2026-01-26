@@ -62,7 +62,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-forest-green text-white relative">
+    <footer className="bg-forest-green dark:bg-gray-900 text-white relative transition-colors duration-300 border-t border-transparent dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           variants={footerVariants}
@@ -88,7 +88,7 @@ export default function Footer() {
                 <span className="text-xl font-bold">邑沅有限公司</span>
               </a>
             </div>
-            <p className="text-gray-300 leading-relaxed text-sm">
+            <p className="text-gray-300 dark:text-gray-400 leading-relaxed text-sm">
               專業的環境教育與永續發展顧問服務提供者，致力於建立更美好的未來。
             </p>
           </motion.div>
@@ -96,11 +96,11 @@ export default function Footer() {
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
             <h3 className="text-lg font-bold mb-6">快速連結</h3>
-            <ul className="space-y-3 text-gray-300 text-sm">
-              <li><a href="#about" className="hover:text-white transition-colors hover:underline">關於邑沅</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors hover:underline">服務項目</a></li>
-              <li><a href="#projects" className="hover:text-white transition-colors hover:underline">執行實績</a></li>
-              <li><a href="#partners" className="hover:text-white transition-colors hover:underline">合作夥伴</a></li>
+            <ul className="space-y-3 text-gray-300 dark:text-gray-400 text-sm">
+              <li><a href="#about" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">關於邑沅</a></li>
+              <li><a href="#services" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">服務項目</a></li>
+              <li><a href="#projects" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">執行實績</a></li>
+              <li><a href="#partners" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">合作夥伴</a></li>
             </ul>
           </motion.div>
 
@@ -109,24 +109,24 @@ export default function Footer() {
             <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20">聯絡我們</h3>
             <ul className="space-y-4 text-gray-300 text-sm">
               <li className="flex items-start gap-3">
-                <Phone size={18} className="flex-shrink-0 mt-1" />
-                <a href="tel:0223880028" className="hover:text-white transition-colors">
+                <Phone size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-forest-green" />
+                <a href="tel:0223880028" className="hover:text-white dark:hover:text-mint-green transition-colors">
                   02-2388-0028
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={18} className="flex-shrink-0 mt-1" />
-                <a href="mailto:yixue8924@gmail.com" className="hover:text-white transition-colors">
+                <Mail size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-forest-green" />
+                <a href="mailto:yixue8924@gmail.com" className="hover:text-white dark:hover:text-mint-green transition-colors">
                   yixue8924@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={18} className="flex-shrink-0 mt-1" />
+                <MapPin size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-forest-green" />
                 <a
                   href="https://www.google.com/maps/search/?api=1&query=臺北市大同區長安西路303號10樓之1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors leading-relaxed"
+                  className="hover:text-white dark:hover:text-mint-green transition-colors leading-relaxed"
                 >
                   10341 臺北市大同區長安西路303號10樓之1
                 </a>
@@ -158,7 +158,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Divider */}
-        <div className="h-px bg-white bg-opacity-10 mb-8"></div>
+        <div className="h-px bg-white bg-opacity-10 dark:bg-opacity-5 mb-8"></div>
 
         {/* Bottom Section */}
         <motion.div
@@ -190,18 +190,17 @@ export default function Footer() {
               className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             />
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative bg-white text-gray-800 w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col"
+              className="relative bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col"
             >
-              <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-[#F0F9F1]">
-                <h3 className="text-xl font-bold text-forest-green">{activePolicy.title}</h3>
-                <button onClick={() => setActivePolicy(null)} className="p-2 hover:bg-white/50 rounded-full transition-colors"><X size={24} className="text-gray-400" /></button>
+              <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-[#F0F9F1] dark:bg-gray-900">
+                <h3 className="text-xl font-bold text-forest-green dark:text-mint-green">{activePolicy.title}</h3>
+                <button onClick={() => setActivePolicy(null)} className="p-2 hover:bg-white/50 dark:hover:bg-gray-700 rounded-full transition-colors"><X size={24} className="text-gray-400 dark:text-gray-300" /></button>
               </div>
-              <div className="p-8 overflow-y-auto leading-relaxed text-gray-600">
+              <div className="p-8 overflow-y-auto leading-relaxed text-gray-600 dark:text-gray-300">
                 {activePolicy.content.split('\n').map((line, i) => <p key={i} className="mb-4">{line}</p>)}
               </div>
-              <div className="p-4 border-t border-gray-100 text-center">
-                <button onClick={() => setActivePolicy(null)} className="bg-forest-green text-white px-10 py-2.5 rounded-full hover:shadow-lg transition-all font-medium">我已瞭解</button>
+              <div className="p-4 border-t border-gray-100 dark:border-gray-700 text-center">
+                <button onClick={() => setActivePolicy(null)} className="bg-forest-green dark:bg-mint-green text-white dark:text-forest-green px-10 py-2.5 rounded-full hover:shadow-lg transition-all font-medium">我已瞭解</button>
               </div>
             </motion.div>
           </div>

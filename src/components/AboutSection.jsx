@@ -51,7 +51,7 @@ export default function AboutSection() {
   ]
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-mint-green scroll-mt-20">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-mint-green dark:bg-gray-800/50 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -61,10 +61,10 @@ export default function AboutSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-forest-green dark:text-mint-green mb-4">
             關於邑沅
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
             專業的環境教育與永續發展顧問服務提供者
           </p>
         </motion.div>
@@ -75,12 +75,12 @@ export default function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-lg p-8 md:p-12 mb-16"
+          className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 md:p-12 mb-16 border border-transparent dark:border-gray-700"
         >
-          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
             邑沅有限公司致力於環境教育與永續發展服務，為企業、學校與社區提供全方位的環境教育課程、綠色轉型諮詢與永續發展方案。我們相信教育與知識的力量，能夠推動社會走向更永續的未來。
           </p>
-          <p className="text-lg text-gray-700 leading-relaxed">
+          <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
             透過創新的教學方法、專業的顧問團隊與實踐導向的活動設計，我們幫助客戶建立環保意識、實現碳減排目標，並創造正面的社會與環境影響。
           </p>
         </motion.div>
@@ -99,7 +99,7 @@ export default function AboutSection() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 flex flex-col"
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 flex flex-col border border-transparent dark:border-gray-700"
               >
                 {/* Icon Container - 手機版居中 */}
                 <div className="flex justify-center md:justify-start mb-4">
@@ -109,12 +109,12 @@ export default function AboutSection() {
                 </div>
 
                 {/* Title - 手機版居中 */}
-                <h3 className="text-xl font-bold text-forest-green mb-3 text-center md:text-left">
+                <h3 className="text-xl font-bold text-forest-green dark:text-mint-green mb-3 text-center md:text-left">
                   {value.title}
                 </h3>
 
                 {/* Description - 始終靠左 */}
-                <p className="text-gray-600 leading-relaxed text-left">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-left">
                   {value.description}
                 </p>
               </motion.div>
@@ -135,14 +135,14 @@ export default function AboutSection() {
             { label: '受益的學生與社區成員', value: '10,000+', color: 'text-ocean-blue' },
             { label: '年環境教育經驗', value: '15+', color: 'text-amber-600' }
           ].map((stat, i) => (
-            <div 
-              key={i} 
-              className="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300"
-              role="group" 
+            <div
+              key={i}
+              className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center hover:shadow-2xl transition-all duration-300 border border-transparent dark:border-gray-700"
+              role="group"
               aria-label={`${stat.label}: ${stat.value}`}
             >
               <div className={`text-4xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
-              <p className="text-gray-600 font-medium">{stat.label}</p>
+              <p className="text-gray-600 dark:text-gray-400 font-medium">{stat.label}</p>
             </div>
           ))}
         </motion.div>

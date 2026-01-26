@@ -8,36 +8,36 @@ import naaeeLogo from '../assets/partner_logos/naaee-logo.webp'
 
 export default function PartnersSection() {
   const partners = [
-    { 
-      id: 1, 
+    {
+      id: 1,
       name: 'GEEP亞太中心',
       logo: geepArcpLogo,
       description: '全球環境教育夥伴亞太中心',
-      w: 180, h: 80 
+      w: 180, h: 80
     },
-    { 
-      id: 2, 
+    {
+      id: 2,
       name: 'GEEP',
       logo: geepLogo,
       description: '全球環境教育夥伴組織',
       w: 120, h: 80
     },
-    { 
-      id: 3, 
+    {
+      id: 3,
       name: '連江縣政府',
       logo: matzuLogo,
       description: '馬祖地方政府',
       w: 100, h: 100
     },
-    { 
-      id: 4, 
+    {
+      id: 4,
       name: '環境部',
       logo: moenvLogo,
       description: '行政院環境部',
       w: 200, h: 60
     },
-    { 
-      id: 5, 
+    {
+      id: 5,
       name: 'NAAEE',
       logo: naaeeLogo,
       description: '北美環境教育協會',
@@ -46,7 +46,7 @@ export default function PartnersSection() {
   ]
 
   return (
-    <section id="partners" className="py-24 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-20">
+    <section id="partners" className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-gray-900 scroll-mt-20 transition-colors duration-300">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -56,11 +56,11 @@ export default function PartnersSection() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-forest-green mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-forest-green dark:text-mint-green mb-6">
             合作夥伴
           </h2>
-          <div className="w-16 h-1 bg-forest-green mx-auto mb-6 rounded-full" />
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <div className="w-16 h-1 bg-forest-green dark:bg-mint-green mx-auto mb-6 rounded-full" />
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
             與政府機構、國際組織與企業夥伴攜手合作
           </p>
         </motion.div>
@@ -82,24 +82,24 @@ export default function PartnersSection() {
               viewport={{ once: true }}
               className="flex flex-col"
             >
-              <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex items-center justify-center h-40 hover:shadow-xl transition-all duration-500 group relative">
-                <img 
-                  src={partner.logo} 
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 p-6 flex items-center justify-center h-40 hover:shadow-xl transition-all duration-500 group relative">
+                <img
+                  src={partner.logo}
                   alt={`${partner.name} 標誌`}
                   // 💡 保持顯式尺寸以解決 PageSpeed 的 CLS 問題
                   width={partner.w}
                   height={partner.h}
-                  loading="lazy" 
+                  loading="lazy"
                   decoding="async"
                   // 💡 移除 grayscale，保持原色
                   className="max-w-[80%] max-h-[70%] object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="mt-6 text-center">
-                <h3 className="text-sm font-bold text-gray-900 group-hover:text-forest-green transition-colors">
+                <h3 className="text-sm font-bold text-gray-900 dark:text-white group-hover:text-forest-green dark:group-hover:text-mint-green transition-colors">
                   {partner.name}
                 </h3>
-                <p className="mt-2 text-xs text-gray-500 leading-relaxed px-2">
+                <p className="mt-2 text-xs text-gray-500 dark:text-gray-400 leading-relaxed px-2">
                   {partner.description}
                 </p>
               </div>
@@ -113,9 +113,9 @@ export default function PartnersSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="mt-24 bg-gradient-to-br from-mint-green/30 to-white border border-mint-green/20 rounded-3xl p-8 md:p-16 text-center shadow-inner"
+          className="mt-24 bg-gradient-to-br from-mint-green/30 to-white dark:from-mint-green/10 dark:to-gray-800 border border-mint-green/20 dark:border-mint-green/10 rounded-3xl p-8 md:p-16 text-center shadow-inner"
         >
-          <p className="text-lg md:text-xl text-forest-green font-medium leading-loose max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-forest-green dark:text-mint-green font-medium leading-loose max-w-3xl mx-auto">
             「多年來與政府機關及民間單位協同合作，讓我們在環境教育領域累積了豐富的經驗與可信的成績。我們致力於為臺灣的永續發展做出貢獻。」
           </p>
         </motion.div>
