@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://yixue8924.github.io/sitemap.xml
+Sitemap: https://yiyuan-env.github.io/sitemap.xml
