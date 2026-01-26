@@ -53,6 +53,8 @@ export default function CookieConsent() {
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
           className="fixed bottom-0 left-0 right-0 z-[150] p-4 md:p-6"
+          role="complementary"
+          aria-label="Cookie 同意聲明"
         >
           <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] border border-gray-100 dark:border-gray-700 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-start gap-4">
@@ -96,13 +98,21 @@ export default function CookieConsent() {
           <motion.div
             initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }}
             className="relative bg-white dark:bg-gray-800 w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="cookie-settings-title"
           >
             <div className="p-6 border-b border-gray-100 dark:border-gray-700 bg-mint-green/10 dark:bg-gray-700/50 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <Settings className="text-forest-green dark:text-mint-green" size={24} />
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white">Cookie 偏好設定</h3>
+                <h3 id="cookie-settings-title" className="text-xl font-bold text-gray-800 dark:text-white">Cookie 偏好設定</h3>
               </div>
-              <button onClick={() => setShowPreferences(false)}><X className="text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200" /></button>
+              <button
+                onClick={() => setShowPreferences(false)}
+                aria-label="關閉偏好設定"
+              >
+                <X className="text-gray-400 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-200" />
+              </button>
             </div>
 
             <div className="p-6 space-y-6">
@@ -118,7 +128,7 @@ export default function CookieConsent() {
               {/* Analytics */}
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h4 className="font-bold text-gray-800 dark:text-white">分析性 Cookie</h4>
+                  <h4 id="analytics-label" className="font-bold text-gray-800 dark:text-white">分析性 Cookie</h4>
                   <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">幫助我們了解網站流量與效能 (Google Analytics)。</p>
                 </div>
                 <label className="relative inline-flex items-center cursor-pointer">
@@ -127,6 +137,7 @@ export default function CookieConsent() {
                     className="sr-only peer"
                     checked={consent.analytics}
                     onChange={(e) => setConsent(prev => ({ ...prev, analytics: e.target.checked }))}
+                    aria-labelledby="analytics-label"
                   />
                   <div className="w-11 h-6 bg-gray-200 dark:bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-forest-green dark:peer-checked:bg-mint-green"></div>
                 </label>

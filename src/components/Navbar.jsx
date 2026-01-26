@@ -35,7 +35,7 @@ const Navbar = () => {
 
           {/* Logo 區域 */}
           <div className="flex-shrink-0 flex items-center gap-3">
-            <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+            <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity" aria-label="邑沅有限公司 首頁">
               <img
                 src={logoSvg}
                 alt="邑沅有限公司標誌"
@@ -69,7 +69,8 @@ const Navbar = () => {
                   onClick={toggleTheme}
                   className={`p-2 rounded-full transition-all hover:bg-gray-100 dark:hover:bg-gray-800 ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-forest-green dark:text-white'
                     }`}
-                  aria-label="切換深色模式"
+                  aria-label={theme === 'dark' ? "切換至淺色模式" : "切換至深色模式"}
+                  aria-pressed={theme === 'dark'}
                 >
                   {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
                 </button>
@@ -90,6 +91,8 @@ const Navbar = () => {
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-all ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-gray-800 dark:text-white'
                 }`}
+              aria-label={theme === 'dark' ? "切換至淺色模式" : "切換至深色模式"}
+              aria-pressed={theme === 'dark'}
             >
               {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
             </button>

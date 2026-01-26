@@ -190,11 +190,21 @@ export default function Footer() {
               className="absolute inset-0 bg-black/70 backdrop-blur-sm"
             />
             <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
               className="relative bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-3xl shadow-2xl flex flex-col"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="policy-title"
             >
               <div className="p-6 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-[#F0F9F1] dark:bg-gray-900">
-                <h3 className="text-xl font-bold text-forest-green dark:text-mint-green">{activePolicy.title}</h3>
-                <button onClick={() => setActivePolicy(null)} className="p-2 hover:bg-white/50 dark:hover:bg-gray-700 rounded-full transition-colors"><X size={24} className="text-gray-400 dark:text-gray-300" /></button>
+                <h3 id="policy-title" className="text-xl font-bold text-forest-green dark:text-mint-green">{activePolicy.title}</h3>
+                <button
+                  onClick={() => setActivePolicy(null)}
+                  className="p-2 hover:bg-white/50 dark:hover:bg-gray-700 rounded-full transition-colors"
+                  aria-label="關閉預覽"
+                >
+                  <X size={24} className="text-gray-400 dark:text-gray-300" />
+                </button>
               </div>
               <div className="p-8 overflow-y-auto leading-relaxed text-gray-600 dark:text-gray-300">
                 {activePolicy.content.split('\n').map((line, i) => <p key={i} className="mb-4">{line}</p>)}
