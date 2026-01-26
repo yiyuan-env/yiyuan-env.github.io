@@ -23,6 +23,9 @@ function App() {
   return (
     <HelmetProvider>
       <div className="w-full bg-white overflow-x-hidden relative">
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[200] focus:top-4 focus:left-4 bg-white text-forest-green px-6 py-2 rounded-full font-bold shadow-2xl border-2 border-forest-green transition-all">
+          跳轉到主要內容
+        </a>
         {/* --- SEO & Meta Tags --- */}
         <Helmet>
           <title>邑沅有限公司 | 專業環境教育與永續發展顧問</title>
@@ -34,7 +37,7 @@ function App() {
           <meta property="og:url" content={siteUrl} />
           <meta property="og:title" content="邑沅有限公司 - 專業環境教育與永續發展顧問" />
           <meta property="og:description" content="深耕環境教育，提供客製化永續顧問服務。點擊了解更多邑沅的成功案例。" />
-          <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+          <meta property="og:image" content={`${siteUrl}/og-image.png`} />
 
           <link rel="canonical" href={siteUrl} />
 
@@ -68,7 +71,7 @@ function App() {
         {/* --- Layout Sections --- */}
         <Navbar />
 
-        <main>
+        <main id="main-content">
           {/* Hero section is rendered immediately to satisfy LCP */}
           <HeroSection />
 

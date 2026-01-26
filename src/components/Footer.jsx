@@ -75,12 +75,14 @@ export default function Footer() {
           <motion.div variants={itemVariants}>
             <div className="flex items-center space-x-2 mb-6">
               <a href="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-                <img 
+                <img
                   src={logoSvg}
                   alt="邑沅有限公司官方標誌"
                   fetchpriority="high"   // NEW: Directs browser to download this first
                   loading="eager"        // NEW: Prevents lazy loading for the top image
                   decoding="async"
+                  width="48"
+                  height="48"
                   className="w-12 h-12 rounded-lg"
                   style={{ filter: 'brightness(0) invert(1)' }} />
                 <span className="text-xl font-bold">邑沅有限公司</span>
@@ -120,9 +122,9 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="flex-shrink-0 mt-1" />
-                <a 
-                  href="https://www.google.com/maps/search/?api=1&query=臺北市大同區長安西路303號10樓之1" 
-                  target="_blank" 
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=臺北市大同區長安西路303號10樓之1"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors leading-relaxed"
                 >
@@ -182,7 +184,7 @@ export default function Footer() {
       <AnimatePresence>
         {activePolicy && (
           <div className="fixed inset-0 z-[120] flex items-center justify-center p-4">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               onClick={() => setActivePolicy(null)}
               className="absolute inset-0 bg-black/70 backdrop-blur-sm"
