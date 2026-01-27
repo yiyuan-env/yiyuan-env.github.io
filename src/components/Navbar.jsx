@@ -51,8 +51,8 @@ const Navbar = () => {
           </div>
 
           {/* 桌面版選單 */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+          <div className="hidden md:flex flex-1 justify-center items-center">
+            <div className="flex items-baseline space-x-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -64,26 +64,27 @@ const Navbar = () => {
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-forest-green dark:bg-mint-green transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={toggleTheme}
-                  className={`p-2 rounded-full transition-all hover:bg-gray-100 dark:hover:bg-gray-800 ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-forest-green dark:text-white'
-                    }`}
-                  aria-label={theme === 'dark' ? "切換至淺色模式" : "切換至深色模式"}
-                  aria-pressed={theme === 'dark'}
-                >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-                <a
-                  href="#contact"
-                  className="bg-forest-green text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg active:scale-95"
-                >
-                  聯絡我們
-                </a>
-              </div>
             </div>
-
           </div>
+
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-full transition-all hover:bg-gray-100 dark:hover:bg-gray-800 ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-forest-green dark:text-white'
+                }`}
+              aria-label={theme === 'dark' ? "切換至淺色模式" : "切換至深色模式"}
+              aria-pressed={theme === 'dark'}
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+            <a
+              href="#contact"
+              className="bg-forest-green text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg active:scale-95"
+            >
+              聯絡我們
+            </a>
+          </div>
+
 
           {/* 手機版選單按鈕 - 已修正 Accessibility 問題 */}
           <div className="md:hidden flex items-center gap-4">
