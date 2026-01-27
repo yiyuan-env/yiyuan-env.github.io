@@ -31,7 +31,7 @@ function App() {
           </a>
           {/* --- SEO & Meta Tags --- */}
           <Helmet>
-            <title>邑沅有限公司 | 專業環境教育與永續發展顧問</title>
+            <title>邑沅有限公司</title>
             <meta name="description" content="邑沅有限公司致力於環境教育與永續發展，提供ESG顧問諮詢、環教課程開發、環教設施場所申辦及多媒體製作服務。與您共同建立綠色永續未來。" />
             <meta name="keywords" content="邑沅, 邑沅有限公司, 環境教育, 永續發展, ESG顧問, 台北環境教育, 永續經營, 環教場域申辦" />
             <meta name="author" content="邑沅有限公司" />
