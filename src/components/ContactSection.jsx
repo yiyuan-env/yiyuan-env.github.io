@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Calendar, Send, CheckCircle } from 'lucide-react'
 
-const ContactSection = () => {
+const ContactSection = ({ onOpenPolicy }) => {
     const [formStatus, setFormStatus] = useState('idle') // idle, submitting, success, error
 
     const handleSubmit = async (e) => {
@@ -78,8 +78,8 @@ const ContactSection = () => {
                     viewport={{ once: true }}
                 >
                     {/* Left Column: Contact Form */}
-                    <motion.div variants={itemVariants}>
-                        <div className="bg-white dark:bg-gray-800 p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700">
+                    <motion.div variants={itemVariants} className="h-full">
+                        <div className="bg-white dark:bg-gray-800 p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 h-full flex flex-col">
                             <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white">傳送訊息</h3>
 
                             {formStatus === 'success' ? (
@@ -97,73 +97,85 @@ const ContactSection = () => {
                                     </button>
                                 </div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="space-y-5">
-                                    <div className="grid md:grid-cols-2 gap-5">
+                                <form onSubmit={handleSubmit} className="flex-grow flex flex-col justify-between">
+                                    <div className="space-y-5">
+                                        <div className="grid md:grid-cols-2 gap-5">
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">姓名</label>
+                                                <input
+                                                    type="text"
+                                                    name="name"
+                                                    required
+                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
+                                                    placeholder="王小明"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">電子郵件</label>
+                                                <input
+                                                    type="email"
+                                                    name="email"
+                                                    required
+                                                    className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
+                                                    placeholder="example@gmail.com"
+                                                />
+                                            </div>
+                                        </div>
+
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">姓名</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">主旨</label>
                                             <input
                                                 type="text"
-                                                name="name"
+                                                name="subject"
                                                 required
                                                 className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
-                                                placeholder="王小明"
+                                                placeholder="ESG 整合顧問需求"
                                             />
                                         </div>
+
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">電子郵件</label>
-                                            <input
-                                                type="email"
-                                                name="email"
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">您的訊息</label>
+                                            <textarea
+                                                name="message"
                                                 required
-                                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
-                                                placeholder="example@gmail.com"
-                                            />
+                                                rows="6"
+                                                className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white resize-none"
+                                                placeholder="請輸入您的需求明細..."
+                                            ></textarea>
                                         </div>
                                     </div>
 
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">主旨</label>
-                                        <input
-                                            type="text"
-                                            name="subject"
-                                            required
-                                            className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
-                                            placeholder="ESG 整合顧問需求"
-                                        />
+                                    <div className="mt-8">
+                                        <button
+                                            type="submit"
+                                            disabled={formStatus === 'submitting'}
+                                            className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg active:scale-[0.98] ${formStatus === 'submitting'
+                                                ? 'bg-gray-300 cursor-not-allowed'
+                                                : 'bg-forest-green text-white hover:bg-opacity-90 hover:shadow-xl'
+                                                }`}
+                                        >
+                                            {formStatus === 'submitting' ? (
+                                                '傳送中...'
+                                            ) : (
+                                                <>
+                                                    <Send size={18} />
+                                                    傳送訊息
+                                                </>
+                                            )}
+                                        </button>
+
+                                        <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">
+                                            按下傳送即表示您同意我們的
+                                            <button
+                                                type="button"
+                                                onClick={() => onOpenPolicy('privacy')}
+                                                className="text-forest-green dark:text-mint-green hover:underline focus:outline-none"
+                                            >
+                                                隱私政策
+                                            </button>
+                                            。
+                                        </p>
                                     </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">您的訊息</label>
-                                        <textarea
-                                            name="message"
-                                            required
-                                            rows="4"
-                                            className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white resize-none"
-                                            placeholder="請輸入您的需求明細..."
-                                        ></textarea>
-                                    </div>
-
-                                    <button
-                                        type="submit"
-                                        disabled={formStatus === 'submitting'}
-                                        className={`w-full py-4 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg active:scale-[0.98] ${formStatus === 'submitting'
-                                            ? 'bg-gray-300 cursor-not-allowed'
-                                            : 'bg-forest-green text-white hover:bg-opacity-90 hover:shadow-xl'
-                                            }`}
-                                    >
-                                        {formStatus === 'submitting' ? (
-                                            '傳送中...'
-                                        ) : (
-                                            <>
-                                                <Send size={18} />
-                                                傳送訊息
-                                            </>
-                                        )}
-                                    </button>
-
-                                    <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">
-                                        按下傳送即表示您同意我們的私隱政策。
-                                    </p>
                                 </form>
                             )}
                         </div>
@@ -216,6 +228,23 @@ const ContactSection = () => {
                                     </div>
                                 </li>
                             </ul>
+                        </div>
+
+                        {/* Google Map Integration */}
+                        <div className="bg-white dark:bg-gray-800 p-2 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden h-64 md:h-80">
+                            <iframe
+                                title="邑沅有限公司位置"
+                                src="https://maps.google.com/maps?q=%E8%87%BA%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E9%95%B7%E5%AE%89%E8%A5%BF%E8%B7%AF303%E8%99%9F10%E6%A8%93%E4%B9%8B1&hl=zh-TW&z=16&output=embed"
+                                width="100%"
+                                height="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                className="rounded-2xl"
+                            >
+                                您的瀏覽器不支援 iframe，請點擊此處查看 <a href="https://maps.google.com/maps?q=%E8%87%BA%E5%8C%97%E5%B8%82%E5%A4%A7%E5%90%8C%E5%8D%80%E9%95%B7%E5%AE%89%E8%A5%BF%E8%B7%AF303%E8%99%9F10%E6%A8%93%E4%B9%8B1" target="_blank" rel="noopener noreferrer">地圖位置</a>。
+                            </iframe>
                         </div>
                     </motion.div>
                 </motion.div>
