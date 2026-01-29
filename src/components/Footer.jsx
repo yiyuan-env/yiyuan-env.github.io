@@ -59,7 +59,7 @@ export default function Footer({ onOpenPolicy }) {
               </a>
             </div>
             <p className="text-gray-300 dark:text-gray-400 leading-relaxed text-sm">
-              專業的環境教育與永續發展顧問服務提供者，致力於建立更美好的未來。
+              提供專業的環境教育與永續發展顧問服務，致力於建立更美好的未來。
             </p>
           </motion.div>
 
