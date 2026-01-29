@@ -69,7 +69,7 @@ export default function Footer() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-4 gap-12 mb-12"
+          className="grid md:grid-cols-3 gap-12 mb-12"
         >
           {/* Company Info */}
           <motion.div variants={itemVariants}>
@@ -104,39 +104,12 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Info - Updated with Actionable Links */}
+          {/* Contact & Social Combined */}
           <motion.div variants={itemVariants}>
-            <h3 id="contact" className="text-lg font-bold mb-6 scroll-mt-20">聯絡我們</h3>
-            <ul className="space-y-4 text-gray-300 text-sm">
-              <li className="flex items-start gap-3">
-                <Phone size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-white" />
-                <a href="tel:0223880028" className="hover:text-white dark:hover:text-mint-green transition-colors">
-                  02-2388-0028
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-white" />
-                <a href="mailto:yixue8924@gmail.com" className="hover:text-white dark:hover:text-mint-green transition-colors">
-                  yixue8924@gmail.com
-                </a>
-              </li>
-              <li className="flex items-start gap-3">
-                <MapPin size={18} className="flex-shrink-0 mt-1 text-mint-green dark:text-white" />
-                <a
-                  href="https://www.google.com/maps/search/?api=1&query=臺北市大同區長安西路303號10樓之1"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-white dark:hover:text-mint-green transition-colors leading-relaxed"
-                >
-                  10341 臺北市大同區長安西路303號10樓之1
-                </a>
-              </li>
-            </ul>
-          </motion.div>
-
-          {/* Social Media */}
-          <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-6">追蹤我們</h3>
+            <h3 className="text-lg font-bold mb-6">歡迎聯繫</h3>
+            <p className="text-gray-300 dark:text-gray-400 text-sm mb-6 leading-relaxed">
+              如有任何疑問或合作需求，歡迎點選導覽列的「聯絡我們」或直接透過下方社群平台與我們互動。
+            </p>
             <div className="flex gap-4">
               {[
                 { icon: <Facebook size={20} />, label: 'Facebook' },
@@ -148,7 +121,7 @@ export default function Footer() {
                   href="#"
                   onClick={handleSocialClick}
                   aria-label={social.label}
-                  className="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition-all duration-300"
+                  className="w-10 h-10 bg-white bg-opacity-10 rounded-full flex items-center justify-center hover:bg-opacity-20 transition-all duration-300"
                 >
                   {social.icon}
                 </a>

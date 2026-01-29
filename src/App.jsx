@@ -12,6 +12,7 @@ const AboutSection = lazy(() => import('./components/AboutSection'))
 const ServicesSection = lazy(() => import('./components/ServicesSection'))
 const ProjectsSection = lazy(() => import('./components/ProjectsSection'))
 const PartnersSection = lazy(() => import('./components/PartnersSection'))
+const ContactSection = lazy(() => import('./components/ContactSection'))
 const Footer = lazy(() => import('./components/Footer'))
 const BackToTop = lazy(() => import('./components/BackToTop'))
 const CookieConsent = lazy(() => import('./components/CookieConsent'))
@@ -84,6 +85,7 @@ function App() {
               <ServicesSection />
               <ProjectsSection />
               <PartnersSection />
+              <ContactSection />
             </Suspense>
           </main>
 
