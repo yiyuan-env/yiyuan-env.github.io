@@ -10,7 +10,12 @@ const ContactSection = ({ onOpenPolicy }) => {
         setFormStatus('submitting')
 
         const formData = new FormData(e.target)
-        const data = Object.fromEntries(formData.entries())
+        let data = Object.fromEntries(formData.entries())
+
+        // Add dynamic subject for localized notification emails
+        if (data.主旨) {
+            data._subject = `邑沅官網訊息：${data.主旨}`
+        }
 
         // DEBUG: Log the data so you can see it on localhost console
         console.log('Form submission captured:', data)
@@ -98,13 +103,16 @@ const ContactSection = ({ onOpenPolicy }) => {
                                 </div>
                             ) : (
                                 <form onSubmit={handleSubmit} className="flex-grow flex flex-col justify-between">
+                                    {/* Formspree Localization and Metadata */}
+                                    <input type="hidden" name="_language" value="zh-TW" />
+
                                     <div className="space-y-5">
                                         <div className="grid md:grid-cols-2 gap-5">
                                             <div>
                                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">姓名</label>
                                                 <input
                                                     type="text"
-                                                    name="name"
+                                                    name="姓名"
                                                     required
                                                     className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
                                                     placeholder="王小明"
@@ -114,7 +122,7 @@ const ContactSection = ({ onOpenPolicy }) => {
                                                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">電子郵件</label>
                                                 <input
                                                     type="email"
-                                                    name="email"
+                                                    name="電子郵件"
                                                     required
                                                     className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
                                                     placeholder="example@gmail.com"
@@ -126,7 +134,7 @@ const ContactSection = ({ onOpenPolicy }) => {
                                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">主旨</label>
                                             <input
                                                 type="text"
-                                                name="subject"
+                                                name="主旨"
                                                 required
                                                 className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
                                                 placeholder="ESG 整合顧問需求"
@@ -136,7 +144,7 @@ const ContactSection = ({ onOpenPolicy }) => {
                                         <div>
                                             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">您的訊息</label>
                                             <textarea
-                                                name="message"
+                                                name="訊息內容"
                                                 required
                                                 rows="6"
                                                 className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white resize-none"
