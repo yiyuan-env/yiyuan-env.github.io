@@ -48,8 +48,20 @@ const Footer = lazy(() => import('./components/Footer'))
 const BackToTop = lazy(() => import('./components/BackToTop'))
 const CookieConsent = lazy(() => import('./components/CookieConsent'))
 
-// Loading placeholder for layout stability
-const SectionLoader = () => <div className="h-20 bg-transparent" />
+// Sleek Skeleton Loader for improved UX (Page Layout Stability)
+const SectionLoader = () => (
+  <div className="w-full flex items-center justify-center p-12 lg:p-24 bg-gray-50 dark:bg-gray-800">
+    <div className="w-full max-w-4xl space-y-4 animate-pulse">
+      <div className="h-8 bg-gray-200 dark:bg-gray-700 rounded-lg w-1/3 mx-auto"></div>
+      <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2 mx-auto mt-6"></div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+        <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
+        <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
+        <div className="h-48 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
+      </div>
+    </div>
+  </div>
+)
 
 function App() {
   const [activePolicy, setActivePolicy] = React.useState(null)
@@ -83,24 +95,43 @@ function App() {
               {`
               {
                 "@context": "https://schema.org",
-                "@type": "Organization",
-                "name": "邑沅有限公司",
-                "url": "${siteUrl}",
-                "logo": "${siteUrl}/yiyuan.svg",
-                "contactPoint": {
-                  "@type": "ContactPoint",
-                  "telephone": "+886-2-2388-0028",
-                  "contactType": "customer service",
-                  "areaServed": "TW",
-                  "availableLanguage": "Chinese"
-                },
-                "address": {
-                  "@type": "PostalAddress",
-                  "streetAddress": "長安西路303號10樓之1",
-                  "addressLocality": "台北市大同區",
-                  "postalCode": "10341",
-                  "addressCountry": "TW"
-                }
+                "@graph": [
+                  {
+                    "@type": "Organization",
+                    "@id": "${siteUrl}#organization",
+                    "name": "邑沅有限公司",
+                    "url": "${siteUrl}",
+                    "logo": "${siteUrl}/yiyuan.svg",
+                    "contactPoint": {
+                      "@type": "ContactPoint",
+                      "telephone": "+886-2-2388-0028",
+                      "contactType": "customer service",
+                      "areaServed": "TW",
+                      "availableLanguage": "Chinese"
+                    },
+                    "address": {
+                      "@type": "PostalAddress",
+                      "streetAddress": "長安西路303號10樓之1",
+                      "addressLocality": "台北市大同區",
+                      "postalCode": "10341",
+                      "addressCountry": "TW"
+                    }
+                  },
+                  {
+                    "@type": "Service",
+                    "name": "ESG 顧問與永續發展輔導",
+                    "provider": { "@id": "${siteUrl}#organization" },
+                    "areaServed": "TW",
+                    "description": "提供客製化永續顧問服務及企業碳盤查輔導。"
+                  },
+                  {
+                    "@type": "Service",
+                    "name": "環境教育課程開發",
+                    "provider": { "@id": "${siteUrl}#organization" },
+                    "areaServed": "TW",
+                    "description": "專屬環境教育課程設計與環教場域申辦代理。"
+                  }
+                ]
               }
             `}
             </script>
