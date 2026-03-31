@@ -1,76 +1,20 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export default function ProjectsSection() {
+  const { t } = useTranslation();
   const [showAllProjects, setShowAllProjects] = useState(false)
 
-  const projects = [
-    {
-      id: 1,
-      year: '114年',
-      title: '連江縣一般廢棄物轉運處理委託案',
-      description: '負責連江縣一般廢棄物轉運與處理業務，提升廢棄物管理效能',
-      status: '已完成',
-      details: ['廢棄物管理', '轉運服務', '環保衛生'],
-    },
-    {
-      id: 2,
-      year: '114年',
-      title: '菸蒂不落地方案委辦案',
-      description: '推動菸蒂不落地環保宣導方案，強化環境意識與衛生習慣',
-      status: '已完成',
-      details: ['環保宣導', '衛生推廣', '社區教育'],
-    },
-    {
-      id: 3,
-      year: '114年',
-      title: '連江縣毒化及病媒防治業務委辦案',
-      description: '執行連江縣毒化物及病媒防治相關業務，確保居民健康安全',
-      status: '已完成',
-      details: ['毒化防治', '病媒防治', '公共衛生'],
-    },
-    {
-      id: 4,
-      year: '114年',
-      title: '連江縣促進源頭減量暨強化分類回收委辦案',
-      description: '推動垃圾源頭減量及分類回收計畫，實現循環經濟目標',
-      status: '已完成',
-      details: ['源頭減量', '資源回收', '循環經濟'],
-    },
-    {
-      id: 5,
-      year: '114年',
-      title: '連江縣環境教育專案計畫',
-      description: '深入連江縣推展環境教育，涵蓋社區教育、學校合作與在地文化永續發展',
-      status: '已完成',
-      details: ['環境教育', '社區推廣', '永續發展'],
-    },
-    {
-      id: 6,
-      year: '113年',
-      title: '臺美環境教育合作與交流暨亞太中心營運專案工作計畫',
-      description: '與美國合作進行環境教育交流與合作，營運亞太環境教育中心',
-      status: '已完成',
-      details: ['國際合作', '環境教育', '中心營運'],
-    },
-    {
-      id: 7,
-      year: '113年',
-      title: '連江縣促進源頭減量暨強化分類回收委辦案',
-      description: '持續推動垃圾源頭減量及分類回收計畫，建立永續社區',
-      status: '已完成',
-      details: ['源頭減量', '資源回收', '永續社區'],
-    },
-    {
-      id: 8,
-      year: '113年',
-      title: '連江縣環境教育專案計畫',
-      description: '執行連江縣環境教育各項計畫與推廣活動',
-      status: '已完成',
-      details: ['環境教育', '推廣活動', '社區服務'],
-    },
-  ]
+  const projects = Array.from({ length: 8 }).map((_, i) => ({
+    id: i + 1,
+    year: i < 5 ? '114' : '113', // Removed specific character for easier i18n
+    title: t(`projects.items.${i}.title`),
+    description: t(`projects.items.${i}.description`),
+    status: t(`projects.completed`),
+    details: t(`projects.items.${i}.details`, { returnObjects: true }) || [],
+  }))
 
   const timelineVariants = {
     hidden: { opacity: 0 },
@@ -111,11 +55,11 @@ export default function ProjectsSection() {
           className="text-center mb-20"
         >
           <h2 id="projects-title" className="text-4xl md:text-5xl font-bold text-forest-green dark:text-mint-green mb-6">
-            相關執行實績
+            {t('projects.title')}
           </h2>
           <div className="w-24 h-1.5 bg-forest-green dark:bg-mint-green mx-auto mb-8 rounded-full"></div>
           <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            多年來與政府與機構攜手，深耕環保與環境教育領域
+            {t('projects.subtitle')}
           </p>
         </motion.div>
 
@@ -149,12 +93,11 @@ export default function ProjectsSection() {
                           {project.year}
                         </span>
 
-                        {/* ✅ 已整合的 Accessibility 優化狀態標籤 */}
                         <span
                           className="inline-flex px-3 py-1 bg-gray-100 dark:bg-gray-700 group-hover:dark:bg-gray-100 text-gray-600 dark:text-gray-300 group-hover:dark:text-gray-600 rounded-full text-xs font-bold uppercase tracking-wider"
                           role="status"
                         >
-                          執行狀態：{project.status}
+                          {t('projects.statusLabel')}{project.status}
                         </span>
                       </div>
 
@@ -201,7 +144,7 @@ export default function ProjectsSection() {
             aria-expanded={showAllProjects}
             className="px-10 py-4 bg-forest-green dark:bg-mint-green text-white dark:text-forest-green rounded-full hover:shadow-2xl hover:bg-forest-green/90 dark:hover:bg-mint-green/90 hover:-translate-y-1 transition-all duration-300 font-bold text-lg inline-flex items-center gap-3"
           >
-            {showAllProjects ? '收起案例集' : '查看完整案例集'}
+            {showAllProjects ? t('projects.buttons.collapse') : t('projects.buttons.viewAll')}
             <motion.span
               animate={{ rotate: showAllProjects ? 180 : 0 }}
               transition={{ duration: 0.3 }}

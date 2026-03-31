@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone, Mail, MapPin, Calendar, Send, CheckCircle } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 const ContactSection = ({ onOpenPolicy }) => {
+    const { t } = useTranslation();
     const [formStatus, setFormStatus] = useState('idle') // idle, submitting, success, error
 
     const handleSubmit = async (e) => {
@@ -68,10 +70,10 @@ const ContactSection = ({ onOpenPolicy }) => {
                     viewport={{ once: true }}
                     variants={itemVariants}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-forest-green dark:text-mint-green mb-4">聯絡我們</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-forest-green dark:text-mint-green mb-4">{t('contact.title')}</h2>
                     <div className="w-20 h-1.5 bg-forest-green dark:bg-mint-green mx-auto rounded-full mb-6" />
                     <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-                        不論是環境教育諮詢、ESG 顧問需求或合作提案，歡迎與我們聯繫。
+                        {t('contact.subtitle')}
                     </p>
                 </motion.div>
 
@@ -85,20 +87,20 @@ const ContactSection = ({ onOpenPolicy }) => {
                     {/* Left Column: Contact Form */}
                     <motion.div variants={itemVariants} className="h-full">
                         <div className="bg-white dark:bg-gray-800 p-8 md:p-10 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 h-full flex flex-col">
-                            <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white">傳送訊息</h3>
+                            <h3 className="text-2xl font-bold mb-8 text-gray-800 dark:text-white">{t('contact.form.title')}</h3>
 
                             {formStatus === 'success' ? (
                                 <div className="py-12 text-center">
                                     <div className="w-20 h-20 bg-mint-green/20 text-forest-green dark:text-mint-green rounded-full flex items-center justify-center mx-auto mb-6">
                                         <CheckCircle size={40} />
                                     </div>
-                                    <h4 className="text-2xl font-bold mb-2">訊息已送出！</h4>
-                                    <p className="text-gray-600 dark:text-gray-400 mb-8">感謝您的聯繫，我們將儘快回覆您。</p>
+                                    <h4 className="text-2xl font-bold mb-2">{t('contact.form.successTitle')}</h4>
+                                    <p className="text-gray-600 dark:text-gray-400 mb-8">{t('contact.form.successDesc')}</p>
                                     <button
                                         onClick={() => setFormStatus('idle')}
                                         className="text-forest-green dark:text-mint-green font-bold hover:underline"
                                     >
-                                        再傳送一則訊息
+                                        {t('contact.form.sendAnother')}
                                     </button>
                                 </div>
                             ) : (
@@ -109,46 +111,46 @@ const ContactSection = ({ onOpenPolicy }) => {
                                     <div className="space-y-5">
                                         <div className="grid md:grid-cols-2 gap-5">
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">姓名</label>
+                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('contact.form.nameLabel')}</label>
                                                 <input
                                                     type="text"
                                                     name="姓名"
                                                     required
                                                     className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
-                                                    placeholder="王小明"
+                                                    placeholder={t('contact.form.namePlaceholder')}
                                                 />
                                             </div>
                                             <div>
-                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">電子郵件</label>
+                                                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('contact.form.emailLabel')}</label>
                                                 <input
                                                     type="email"
                                                     name="電子郵件"
                                                     required
                                                     className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
-                                                    placeholder="example@gmail.com"
+                                                    placeholder={t('contact.form.emailPlaceholder')}
                                                 />
                                             </div>
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">主旨</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('contact.form.subjectLabel')}</label>
                                             <input
                                                 type="text"
                                                 name="主旨"
                                                 required
                                                 className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white"
-                                                placeholder="ESG 整合顧問需求"
+                                                placeholder={t('contact.form.subjectPlaceholder')}
                                             />
                                         </div>
 
                                         <div>
-                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">您的訊息</label>
+                                            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">{t('contact.form.messageLabel')}</label>
                                             <textarea
                                                 name="訊息內容"
                                                 required
                                                 rows="6"
                                                 className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-forest-green dark:focus:ring-mint-green focus:border-transparent transition-all dark:text-white resize-none"
-                                                placeholder="請輸入您的需求明細..."
+                                                placeholder={t('contact.form.messagePlaceholder')}
                                             ></textarea>
                                         </div>
                                     </div>
@@ -163,25 +165,25 @@ const ContactSection = ({ onOpenPolicy }) => {
                                                 }`}
                                         >
                                             {formStatus === 'submitting' ? (
-                                                '傳送中...'
+                                                t('contact.form.submitting')
                                             ) : (
                                                 <>
                                                     <Send size={18} />
-                                                    傳送訊息
+                                                    {t('contact.form.submit')}
                                                 </>
                                             )}
                                         </button>
 
                                         <p className="text-xs text-center text-gray-500 dark:text-gray-400 mt-4">
-                                            按下傳送即表示您同意我們的
+                                            {t('contact.form.policyConsent')}
                                             <button
                                                 type="button"
                                                 onClick={() => onOpenPolicy('privacy')}
-                                                className="text-forest-green dark:text-mint-green hover:underline focus:outline-none"
+                                                className="text-forest-green dark:text-mint-green hover:underline focus:outline-none ml-1"
                                             >
-                                                隱私政策
+                                                {t('contact.form.privacyPolicy')}
                                             </button>
-                                            。
+                                            {t('contact.form.period')}
                                         </p>
                                     </div>
                                 </form>
@@ -196,7 +198,7 @@ const ContactSection = ({ onOpenPolicy }) => {
                                 <span className="w-10 h-10 bg-forest-green dark:bg-mint-green rounded-xl flex items-center justify-center text-white dark:text-forest-green">
                                     <Phone size={20} />
                                 </span>
-                                聯繫資訊
+                                {t('contact.info.title')}
                             </h3>
 
                             <ul className="space-y-6">
@@ -205,7 +207,7 @@ const ContactSection = ({ onOpenPolicy }) => {
                                         <Mail size={20} className="text-forest-green dark:text-mint-green" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">電子郵件</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{t('contact.info.emailLabel')}</p>
                                         <a href="mailto:yixue8924@gmail.com" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-forest-green dark:hover:text-mint-green transition-colors">
                                             yixue8924@gmail.com
                                         </a>
@@ -217,7 +219,7 @@ const ContactSection = ({ onOpenPolicy }) => {
                                         <Phone size={20} className="text-forest-green dark:text-mint-green" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">聯絡電話</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{t('contact.info.phoneLabel')}</p>
                                         <a href="tel:0223880028" className="text-lg font-medium text-gray-800 dark:text-gray-200 hover:text-forest-green dark:hover:text-mint-green transition-colors">
                                             02-2388-0028
                                         </a>
@@ -229,9 +231,9 @@ const ContactSection = ({ onOpenPolicy }) => {
                                         <MapPin size={20} className="text-forest-green dark:text-mint-green" />
                                     </div>
                                     <div>
-                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">辦公地點</p>
+                                        <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">{t('contact.info.addressLabel')}</p>
                                         <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
-                                            10341 臺北市大同區長安西路303號10樓之1
+                                            {t('contact.info.addressContent')}
                                         </p>
                                     </div>
                                 </li>

@@ -1,15 +1,17 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Leaf, Zap, Briefcase, Video, ChevronDown } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export default function ServicesSection() {
+  const { t } = useTranslation();
   const [expandedService, setExpandedService] = useState(null)
 
   const services = [
-    { id: 1, title: '環境教育', description: '為社區、學校與企業提供專業的環境教育課程與教材開發', details: ['社區方案', '學校課程', '教學教材', '課程設計', '師資培訓', '教育評估'], icon: Leaf, color: 'text-forest-green', bgColor: 'bg-green-100' },
-    { id: 2, title: '綠色生活及減碳夥伴', description: '協助企業與社區實現碳減排目標，推廣永續生活方式', details: ['碳減排', '永續生活', '企業諮詢', '環保認證', '減碳培訓', '永續報告'], icon: Zap, color: 'text-ocean-blue', bgColor: 'bg-blue-100' },
-    { id: 3, title: '活動相關服務', description: '組織與執行各類環保與教育活動，營造互動式學習體驗', details: ['工作坊', '環境教育活動', '社區推廣', '志工培訓', '活動評估'], icon: Briefcase, color: 'text-amber-600', bgColor: 'bg-amber-100' },
-    { id: 4, title: '影音多媒體影片製作', description: '製作高質感的環保相關紀錄片與宣傳影片', details: ['紀錄片', '宣傳影片', '多媒體製作', '影片編輯', '後期製作', '字幕服務'], icon: Video, color: 'text-purple-600', bgColor: 'bg-purple-100' },
+    { id: 1, title: t('services.items.0.title'), description: t('services.items.0.description'), details: t('services.items.0.details', { returnObjects: true }), icon: Leaf, color: 'text-forest-green', bgColor: 'bg-green-100' },
+    { id: 2, title: t('services.items.1.title'), description: t('services.items.1.description'), details: t('services.items.1.details', { returnObjects: true }), icon: Zap, color: 'text-ocean-blue', bgColor: 'bg-blue-100' },
+    { id: 3, title: t('services.items.2.title'), description: t('services.items.2.description'), details: t('services.items.2.details', { returnObjects: true }), icon: Briefcase, color: 'text-amber-600', bgColor: 'bg-amber-100' },
+    { id: 4, title: t('services.items.3.title'), description: t('services.items.3.description'), details: t('services.items.3.details', { returnObjects: true }), icon: Video, color: 'text-purple-600', bgColor: 'bg-purple-100' },
   ]
 
   return (
@@ -30,16 +32,16 @@ export default function ServicesSection() {
           className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-forest-green dark:text-mint-green mb-6 tracking-tight">
-            核心服務項目
+            {t('services.title')}
           </h2>
           <div className="w-20 h-1.5 bg-forest-green dark:bg-mint-green mx-auto mb-6 rounded-full" />
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            提供全方位的環境教育與永續發展解決方案
+            {t('services.subtitle')}
           </p>
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 items-stretch">
           {services.map((service) => {
             const IconComponent = service.icon
             const isExpanded = expandedService === service.id
@@ -57,7 +59,7 @@ export default function ServicesSection() {
                   stiffness: 220,
                   damping: 28
                 }}
-                className="relative w-full"
+                className="relative w-full h-full"
               >
                 <div className={`
                   bg-white dark:bg-gray-800 rounded-3xl p-6 md:p-8 h-full flex flex-col transition-all duration-300 border
@@ -117,7 +119,7 @@ export default function ServicesSection() {
                       className="text-forest-green dark:text-mint-green hover:text-ocean-blue dark:hover:text-ocean-blue font-bold text-sm flex items-center w-full justify-between py-2 -my-2 transition-colors"
                       aria-expanded={isExpanded}
                     >
-                      <span>{isExpanded ? '收起詳情' : '了解更多'}</span>
+                      <span>{isExpanded ? t('services.buttons.collapse') : t('services.buttons.learnMore')}</span>
                       <motion.div
                         animate={{ rotate: isExpanded ? 180 : 0 }}
                         transition={{ duration: 0.3 }}

@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter, Info, X } from 'lucide-react'
 import logoSvg from '../assets/yiyuan.svg'
+import { useTranslation } from 'react-i18next'
 
 export default function Footer({ onOpenPolicy }) {
+  const { t } = useTranslation();
   const [showAlert, setShowAlert] = useState(false)
   const currentYear = new Date().getFullYear()
 
@@ -59,26 +61,26 @@ export default function Footer({ onOpenPolicy }) {
               </a>
             </div>
             <p className="text-gray-300 dark:text-gray-400 leading-relaxed text-sm">
-              提供專業的環境教育與永續發展顧問服務，致力於建立更美好的未來。
+              {t('footer.companyDesc')}
             </p>
           </motion.div>
 
           {/* Quick Links */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-6">快速連結</h3>
+            <h3 className="text-lg font-bold mb-6">{t('footer.linksTitle')}</h3>
             <ul className="space-y-3 text-gray-300 dark:text-gray-400 text-sm">
-              <li><a href="#about" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">關於邑沅</a></li>
-              <li><a href="#services" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">服務項目</a></li>
-              <li><a href="#projects" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">執行實績</a></li>
-              <li><a href="#partners" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">合作夥伴</a></li>
+              <li><a href="#about" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">{t('nav.about')}</a></li>
+              <li><a href="#services" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">{t('nav.services')}</a></li>
+              <li><a href="#projects" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">{t('nav.projects')}</a></li>
+              <li><a href="#partners" className="hover:text-white dark:hover:text-mint-green transition-colors hover:underline">{t('nav.partners')}</a></li>
             </ul>
           </motion.div>
 
           {/* Contact & Social Combined */}
           <motion.div variants={itemVariants}>
-            <h3 className="text-lg font-bold mb-6">歡迎聯繫</h3>
+            <h3 className="text-lg font-bold mb-6">{t('footer.contactTitle')}</h3>
             <p className="text-gray-300 dark:text-gray-400 text-sm mb-6 leading-relaxed">
-              如有任何疑問或合作需求，歡迎點選導覽列的「聯絡我們」或直接透過下方社群平台與我們互動。
+              {t('footer.contactDesc')}
             </p>
             <div className="flex gap-4">
               {[
@@ -111,14 +113,14 @@ export default function Footer({ onOpenPolicy }) {
           viewport={{ once: true }}
           className="flex flex-col md:flex-row justify-between items-center gap-6 text-gray-300 text-sm"
         >
-          <p>© {currentYear} 邑沅有限公司．版權所有。</p>
-          <p className="text-gray-400 text-xs leading-relaxed">
-            本網站所有內容的著作權等智慧財產權，均為邑沅有限公司所有。本網站內容僅供參考，若有任何疑問，請直接與我們聯絡。
+          <p>{t('footer.copyright', { year: currentYear })}</p>
+          <p className="text-gray-400 text-xs leading-relaxed max-w-lg md:text-center">
+            {t('footer.disclaimer')}
           </p>
           <div className="flex gap-6">
-            <button onClick={() => onOpenPolicy('privacy')} className="hover:text-white transition-colors">隱私政策</button>
-            <button onClick={() => onOpenPolicy('terms')} className="hover:text-white transition-colors">服務條款</button>
-            <button onClick={() => onOpenPolicy('disclaimer')} className="hover:text-white transition-colors">免責聲明</button>
+            <button onClick={() => onOpenPolicy('privacy')} className="hover:text-white transition-colors">{t('footer.policies.privacy')}</button>
+            <button onClick={() => onOpenPolicy('terms')} className="hover:text-white transition-colors">{t('footer.policies.terms')}</button>
+            <button onClick={() => onOpenPolicy('disclaimer')} className="hover:text-white transition-colors">{t('footer.policies.disclaimer')}</button>
           </div>
         </motion.div>
       </div>
@@ -130,7 +132,7 @@ export default function Footer({ onOpenPolicy }) {
           <motion.div initial={{ opacity: 0, y: 50, x: '-50%' }} animate={{ opacity: 1, y: 0, x: '-50%' }} exit={{ opacity: 0, y: 20, x: '-50%' }} className="fixed bottom-10 left-1/2 z-[100] min-w-[280px]">
             <div className="bg-white text-forest-green px-6 py-4 rounded-2xl shadow-2xl border-l-4 border-forest-green flex items-center gap-4">
               <div className="bg-[#F0F9F1] p-2 rounded-full"><Info size={20} className="text-forest-green" /></div>
-              <div><p className="font-bold text-sm">敬請期待！</p><p className="text-xs text-gray-600">社群專頁正在積極籌備中。</p></div>
+              <div><p className="font-bold text-sm">{t('footer.toastTitle')}</p><p className="text-xs text-gray-600">{t('footer.toastDesc')}</p></div>
             </div>
           </motion.div>
         )}

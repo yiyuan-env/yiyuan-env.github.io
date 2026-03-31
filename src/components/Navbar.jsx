@@ -3,11 +3,13 @@ import { Menu, X, Sun, Moon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import logoSvg from '../assets/yiyuan.svg'
 import { useTheme } from '../context/ThemeContext'
+import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const { theme, toggleTheme } = useTheme()
+  const { t, i18n } = useTranslation()
 
   // 監聽滾動事件，改變導覽列背景
   useEffect(() => {
@@ -19,10 +21,10 @@ const Navbar = () => {
   }, [])
 
   const navLinks = [
-    { name: '關於邑沅', href: '#about' },
-    { name: '服務項目', href: '#services' },
-    { name: '執行實績', href: '#projects' },
-    { name: '合作夥伴', href: '#partners' },
+    { name: t('nav.about'), href: '#about' },
+    { name: t('nav.services'), href: '#services' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.partners'), href: '#partners' },
   ]
 
   return (
@@ -72,27 +74,35 @@ const Navbar = () => {
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-all hover:bg-gray-100 dark:hover:bg-gray-800 ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-forest-green dark:text-white'
                 }`}
-              aria-label={theme === 'dark' ? "切換至淺色模式" : "切換至深色模式"}
+              aria-label={theme === 'dark' ? t('nav.toLight') : t('nav.toDark')}
               aria-pressed={theme === 'dark'}
             >
               {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            <div className="flex bg-gray-100/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-1 mx-2">
+              <button onClick={() => i18n.changeLanguage('zh')} className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${i18n.resolvedLanguage === 'zh' ? 'bg-white dark:bg-gray-700 text-forest-green dark:text-mint-green shadow-sm' : 'text-gray-500 hover:text-gray-800 dark:hover:text-gray-300'}`}>中文</button>
+              <button onClick={() => i18n.changeLanguage('en')} className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${i18n.resolvedLanguage === 'en' ? 'bg-white dark:bg-gray-700 text-forest-green dark:text-mint-green shadow-sm' : 'text-gray-500 hover:text-gray-800 dark:hover:text-gray-300'}`}>EN</button>
+            </div>
             <a
               href="#contact"
               className="bg-forest-green text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md hover:shadow-lg active:scale-95"
             >
-              聯絡我們
+              {t('nav.contact')}
             </a>
           </div>
 
 
           {/* 手機版選單按鈕 - 已修正 Accessibility 問題 */}
           <div className="md:hidden flex items-center gap-4">
+            <div className="flex bg-gray-100/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-1">
+              <button onClick={() => i18n.changeLanguage('zh')} className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${i18n.resolvedLanguage === 'zh' ? 'bg-white dark:bg-gray-700 text-forest-green dark:text-mint-green shadow-sm' : 'text-gray-500'}`}>中文</button>
+              <button onClick={() => i18n.changeLanguage('en')} className={`px-3 py-1 rounded-full text-xs font-bold transition-all ${i18n.resolvedLanguage === 'en' ? 'bg-white dark:bg-gray-700 text-forest-green dark:text-mint-green shadow-sm' : 'text-gray-500'}`}>EN</button>
+            </div>
             <button
               onClick={toggleTheme}
               className={`p-2 rounded-full transition-all ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-gray-800 dark:text-white'
                 }`}
-              aria-label={theme === 'dark' ? "切換至淺色模式" : "切換至深色模式"}
+              aria-label={theme === 'dark' ? t('nav.toLight') : t('nav.toDark')}
               aria-pressed={theme === 'dark'}
             >
               {theme === 'dark' ? <Sun size={24} /> : <Moon size={24} />}
@@ -101,8 +111,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-lg transition-colors ${scrolled ? 'text-forest-green dark:text-mint-green' : 'text-gray-800 dark:text-white'
                 }`}
-              // 這是解決報告中「按鈕沒有可存取名稱」的關鍵
-              aria-label={isOpen ? "關閉導覽選單" : "開啟導覽選單"}
+              aria-label={isOpen ? t('nav.close') : t('nav.open')}
               aria-expanded={isOpen}
             >
               {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -137,7 +146,7 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center bg-forest-green text-white px-6 py-4 rounded-xl font-bold shadow-lg"
                 >
-                  聯絡我們
+                  {t('nav.contact')}
                 </a>
               </div>
             </div>

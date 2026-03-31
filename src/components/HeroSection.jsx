@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Waves, Copy, Check } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 
 export default function HeroSection() {
+  const { t } = useTranslation();
   const [copied, setCopied] = useState(false);
   const emailAddress = "yixue8924@gmail.com";
   const emailSubject = encodeURIComponent("諮詢意願");
@@ -35,9 +37,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green dark:text-mint-green mb-6 leading-tight"
-            >
-              專業環境教育<br />與顧問服務
-            </motion.h1>
+              dangerouslySetInnerHTML={{ __html: t('hero.title') }}
+            />
 
             <motion.p
               initial={{ opacity: 0.01, y: 15 }}
@@ -45,7 +46,7 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-lg"
             >
-              我們深耕於政府合作、教育、企業與社區，提供多元化的永續發展與環保解決方案。
+              {t('hero.subtitle')}
             </motion.p>
 
             <div className="space-y-4">
@@ -61,13 +62,13 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   className="px-8 py-4 border-2 bg-forest-green border-forest-green text-white rounded-full hover:bg-white hover:text-forest-green dark:hover:bg-gray-800 dark:hover:text-mint-green hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
                 >
-                  立即聯絡
+                  {t('hero.contactNow')}
                 </a>
                 <a
                   href="#about"
                   className="px-8 py-4 border-2 border-forest-green text-forest-green dark:text-mint-green dark:border-mint-green rounded-full hover:bg-forest-green hover:text-white dark:hover:bg-mint-green dark:hover:text-gray-900 hover:scale-105 transition-all duration-300 font-medium text-lg inline-flex items-center justify-center"
                 >
-                  了解更多
+                  {t('hero.learnMore')}
                 </a>
               </motion.div>
 
@@ -78,12 +79,12 @@ export default function HeroSection() {
                 transition={{ delay: 0.5 }}
                 className="flex items-center gap-2 text-sm text-forest-green/70 dark:text-mint-green/70 ml-2"
               >
-                <span>或直接複製信箱: {emailAddress}</span>
+                <span>{t('hero.copyEmail')}{emailAddress}</span>
                 <button
                   onClick={copyToClipboard}
                   className="p-2 hover:bg-forest-green/10 dark:hover:bg-mint-green/10 rounded-full transition-colors relative"
-                  title="複製信箱"
-                  aria-label="複製電子郵件信箱"
+                  title={t('hero.copyTitle')}
+                  aria-label={t('hero.copyAria')}
                 >
                   <AnimatePresence mode="wait">
                     {copied ? (
@@ -97,7 +98,7 @@ export default function HeroSection() {
                     )}
                   </AnimatePresence>
                 </button>
-                {copied && <span className="text-xs font-bold text-green-600 animate-pulse">已複製!</span>}
+                {copied && <span className="text-xs font-bold text-green-600 animate-pulse">{t('hero.copied')}</span>}
               </motion.div>
             </div>
           </motion.div>
