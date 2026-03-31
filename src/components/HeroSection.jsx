@@ -28,22 +28,22 @@ export default function HeroSection() {
 
           {/* Left Content */}
           <motion.div
-            initial={{ opacity: 0.01, x: -30 }}
+            initial={{ opacity: 1, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.h1
-              initial={{ opacity: 0.01, y: 15 }}
+              initial={{ opacity: 1, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
+              transition={{ duration: 0.5 }}
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green dark:text-mint-green mb-6 leading-tight"
               dangerouslySetInnerHTML={{ __html: t('hero.title') }}
             />
 
             <motion.p
-              initial={{ opacity: 0.01, y: 15 }}
+              initial={{ opacity: 1, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-lg"
             >
               {t('hero.subtitle')}
