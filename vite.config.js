@@ -19,7 +19,8 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-helmet-async'],
-          'vendor-utils': ['framer-motion', 'lucide-react'],
+          'vendor-animation': ['framer-motion'],
+          'vendor-icons': ['lucide-react'],
         },
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',

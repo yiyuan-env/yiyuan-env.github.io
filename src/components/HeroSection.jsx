@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { Waves, Copy, Check } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
@@ -27,35 +26,18 @@ export default function HeroSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
           {/* Left Content */}
-          <motion.div
-            initial={{ opacity: 1, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-          >
-            <motion.h1
-              initial={{ opacity: 1, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green dark:text-mint-green mb-6 leading-tight"
+          <div className="animate-fade-in-left opacity-0">
+            <h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-forest-green dark:text-mint-green mb-6 leading-tight animate-fade-in-up opacity-0"
               dangerouslySetInnerHTML={{ __html: t('hero.title') }}
             />
 
-            <motion.p
-              initial={{ opacity: 1, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-lg"
-            >
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed max-w-lg animate-fade-in-up-delay-1 opacity-0">
               {t('hero.subtitle')}
-            </motion.p>
+            </p>
 
             <div className="space-y-4">
-              <motion.div
-                initial={{ opacity: 0.01, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-wrap gap-4"
-              >
+              <div className="flex flex-wrap gap-4 animate-fade-in-up-delay-3 opacity-0">
                 <a
                   href={mailtoUrl}
                   target="_blank"
@@ -70,15 +52,10 @@ export default function HeroSection() {
                 >
                   {t('hero.learnMore')}
                 </a>
-              </motion.div>
+              </div>
 
               {/* Copy Email Logic - The "Plan B" */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="flex items-center gap-2 text-sm text-forest-green/70 dark:text-mint-green/70 ml-2"
-              >
+              <div className="flex items-center gap-2 text-sm text-forest-green/70 dark:text-mint-green/70 ml-2 animate-fade-in-up-delay-3 opacity-0">
                 <span>{t('hero.copyEmail')}{emailAddress}</span>
                 <button
                   onClick={copyToClipboard}
@@ -86,30 +63,19 @@ export default function HeroSection() {
                   title={t('hero.copyTitle')}
                   aria-label={t('hero.copyAria')}
                 >
-                  <AnimatePresence mode="wait">
-                    {copied ? (
-                      <motion.div key="check" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                        <Check size={16} className="text-green-600" />
-                      </motion.div>
-                    ) : (
-                      <motion.div key="copy" initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
-                        <Copy size={16} />
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {copied ? (
+                    <Check size={16} className="text-green-600 animate-fade-in-up" />
+                  ) : (
+                     <Copy size={16} className="animate-fade-in-up" />
+                  )}
                 </button>
                 {copied && <span className="text-xs font-bold text-green-600 animate-pulse">{t('hero.copied')}</span>}
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right Illustration */}
-          <motion.div
-            initial={{ opacity: 0.01, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative h-96 md:h-full flex items-center justify-center"
-          >
+          <div className="relative h-96 md:h-full flex items-center justify-center animate-scale-in opacity-0">
             {/* SVG Illustration remains exactly as before */}
             <div className="relative w-full h-full">
               <svg viewBox="0 0 400 400" className="w-full h-full" preserveAspectRatio="xMidYMid meet">
@@ -125,15 +91,11 @@ export default function HeroSection() {
                 <circle cx="150" cy="150" r="2" fill="#2D5A27" opacity="0.3" />
               </svg>
 
-              <motion.div
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute top-10 right-10"
-              >
+              <div className="absolute top-10 right-10 animate-bounce">
                 <Waves size={48} className="text-ocean-blue opacity-70" />
-              </motion.div>
+              </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
